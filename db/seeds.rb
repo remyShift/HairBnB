@@ -1,9 +1,48 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# missing photo for the moment
+
+Wig.create(
+  name: "African black wig"
+  material: "natural"
+  color: "black"
+  hair_style: "curly"
+  length: "long"
+  address: "22 rue des capucins"
+  price: "15 €"
+)
+
+Wig.create(
+  name: "Short African black wig"
+  material: "synthetic"
+  color: "black"
+  hair_style: "curly"
+  length: "short"
+  address: "22 rue des capucins"
+  price: "10 €"
+)
+Wig.create(
+  name: "Asian black straight wig"
+  material: "natural"
+  color: "black"
+  hair_style: "straight"
+  length: "long"
+  address: "50 Avenue Berthelot"
+  price: "25 €"
+)
+Wig.create(
+  name: "European blond wig"
+  material: "synthetic"
+  color: "blond"
+  hair_style: "straight"
+  length: "short"
+  address: "30 rue des capucins"
+  price: "10 €"
+)
+Wig.create(
+  name: " Irish redhead wig"
+  material: "natural"
+  color: "red"
+  hair_style: "straight"
+  length: "long"
+  address: "30 rue des capucins"
+  price: "30 €"
+)
