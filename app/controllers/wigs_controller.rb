@@ -1,5 +1,5 @@
 class WigsController < ApplicationController
   def index
-    Wig.all
+    @wigs = Wig.all
   end
 end
