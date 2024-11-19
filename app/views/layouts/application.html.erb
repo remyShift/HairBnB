@@ -15,9 +15,13 @@
 
   <body class="bg-gray-100">
     <%= render "shared/navbar" %>
+
     <%= yield %>
+
     <% flash.each do |key, message| %>
       <%= render "shared/flash", key: key, message: message %>
     <% end %>
+
+    <%= render "shared/footer" %>
   </body>
 </html>
