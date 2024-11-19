@@ -3,16 +3,10 @@
     data-action="click->toggle-login#closeOnOverlayClick">
 
     <turbo-frame id="modalSignup">
-        <div class="bg-slate-100 w-96 border border-slate-600 rounded-md flex-col p-4 translate-y-10 transition-transform duration-300 ease-in-out hidden"
-            data-toggle-login-target="modalSignup">
-            <%= render "shared/form-signup" %>
-        </div>
+        <%= render "shared/form-signup" %>
     </turbo-frame>
 
     <turbo-frame id="modalLogin">
-        <div class="bg-slate-100 w-96 border border-slate-600 rounded-md flex-col p-4 translate-y-10 transition-transform duration-300 ease-in-out hidden"
-            data-toggle-login-target="modalLogin">
-            <%= render "shared/form-login" %>
-        </div>
+        <%= render "shared/form-login" %>
     </turbo-frame>
 </div>

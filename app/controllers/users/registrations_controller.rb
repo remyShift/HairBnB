@@ -28,6 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       clean_up_passwords resource
       set_minimum_password_length
+      @show_modal_signup = true
       respond_to do |format|
         format.html { render "shared/form-signup", status: :unprocessable_entity }
         format.turbo_stream { render turbo_stream: turbo_stream.replace("modalSignup", partial: "shared/form-signup", locals: { resource: resource }) }
