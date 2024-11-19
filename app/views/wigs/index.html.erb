@@ -1,9 +1,9 @@
 <div>
  <%= render 'shared/searchbar' %>
 </div>
-<%= render 'shared/button' %>
+<div class="container">
 <%= render 'shared/wigcard' %>
 <p><%= link_to "Create new wig", new_wig_path %></p>
-<% @wigs.each do |wig|%>
-<h2><%= link_to wig.name, wig_path(wig) %></p>
-<% end %>
+
+<%= render 'shared/button' %>
+</div>
