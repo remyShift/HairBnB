@@ -4,6 +4,6 @@
 <div class="container mx-4">
 <%= render 'shared/wigcard' %>
 <p><%= link_to "Create new wig", new_wig_path %></p>
-
-<%= render 'shared/button' %>
-</div>
+<% @wigs.each do |wig|%>
+<h2><%= link_to wig.name, wig_path(wig) %></h2>
+<% end %>
