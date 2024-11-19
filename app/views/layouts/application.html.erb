@@ -13,17 +13,17 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-gray-100">
+  <body class="bg-gray-100 h-screen flex flex-col">
     <%= render "shared/navbar" %>
 
-    <main class="container m-4 mx-auto h-[76vh]">
+    <main class="container m-4 mx-auto flex-grow">
       <%= yield %>
     </main>
+
+    <%= render "shared/footer" %>
 
     <% flash.each do |key, message| %>
       <%= render "shared/flash", key: key, message: message %>
     <% end %>
-
-    <%= render "shared/footer" %>
   </body>
 </html>
