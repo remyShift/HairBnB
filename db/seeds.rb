@@ -1,9 +1,21 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require 'faker'
+# Destroying all Wigs
+p "Beware, for I am destroying all wigs!"
+Wig.destroy_all
+
+# Creates seed
+p "Seeding"
+15.times do
+  wig = Wig.new( name: Faker::Creature::Dog.breed,
+           material: ["synthetic", "natural"].sample,
+           hair_style: ["curly", "afro", "straight"].sample,
+           length: Faker::Creature::Dog.coat_length,
+           address: Faker::Address.street_address,
+           color: Faker::Color.color_name,
+           price: rand(20..200),
+           image: Faker::Avatar.image
+        )
+  wig.save!
+end
+# Prints number of wigs seeded
+p "#{Wig.count} wigs created !"
