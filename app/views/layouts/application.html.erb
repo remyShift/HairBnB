@@ -16,7 +16,9 @@
   <body class="bg-gray-100">
     <%= render "shared/navbar" %>
 
-    <%= yield %>
+    <main class="container m-4 mx-auto h-[76vh]">
+      <%= yield %>
+    </main>
 
     <% flash.each do |key, message| %>
       <%= render "shared/flash", key: key, message: message %>
