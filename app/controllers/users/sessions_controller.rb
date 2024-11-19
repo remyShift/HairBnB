@@ -7,6 +7,9 @@ class Users::SessionsController < Devise::SessionsController
   # def new
   #   super
   # end
+  def show
+    @user = current_user
+  end
 
   # POST /resource/sign_in
   def create
@@ -21,7 +24,7 @@ class Users::SessionsController < Devise::SessionsController
       @show_modal_login = true
       respond_to do |format|
         format.html { render "shared/form-login", status: :unprocessable_entity }
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("modalLogin", partial: "shared/form-login", locals: { resource: resource }) }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("modalLogin", partial: "shared/modal-login", locals: { resource: resource }) }
       end
     end
   end
