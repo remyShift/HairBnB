@@ -16,6 +16,9 @@ module.exports = {
       colors: {
         'primary': '#FF385C',
       },
+      fontFamily: {
+        'kaushan': ['Kaushan Script', 'cursive'],
+      },
     },
   },
   plugins: [
