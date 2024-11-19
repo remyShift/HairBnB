@@ -1,5 +1,5 @@
 class WigsController < ApplicationController
-  before_action :set_wig, only: [:show]
+  before_action :set_wig, only: [:show, :edit, :update, :destroy]
   def index
     @wigs = Wig.all
   end
@@ -18,6 +18,22 @@ class WigsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if @wig.update(wig_params)
+      redirect_to wig_path(@wig)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @wig.destroy
+    redirect_to wigs_path
   end
 
   private
