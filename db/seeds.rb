@@ -5,12 +5,12 @@ Wig.destroy_all
 
 # Creates seed
 p "Seeding"
-15.times do
+30.times do
   wig = Wig.new( name: Faker::Creature::Dog.breed,
            material: ["synthetic", "natural"].sample,
            hair_style: ["curly", "afro", "straight"].sample,
            length: Faker::Creature::Dog.coat_length,
-           address: Faker::Address.street_address,
+           address: ["Lyon", "Paris", "Marseille", "Grenoble"].sample,
            color: Faker::Color.color_name,
            price: rand(20..200),
            image: Faker::Avatar.image
