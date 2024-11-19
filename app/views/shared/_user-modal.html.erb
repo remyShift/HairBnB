@@ -1,0 +1,16 @@
+<div class="bg-slate-100 w-44 h-auto border border-slate-600 absolute flex-col justify-center top-20 right-4 rounded-md transition-opacity duration-300 opacity-0 px-4 hidden ease-in-out"
+    data-toggle-login-target="loginSignup">
+    <% if user_signed_in? %>
+        <%= link_to "Mon profil", edit_user_registration_path, class: "text-sm py-2 cursor-pointer text-center hover:text-primary transition-colors duration-300" %>
+        <div class="w-full h-[1px] bg-slate-300 rounded-full my-2"></div>
+        <%= link_to "Déconnexion", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-sm py-2 cursor-pointer text-center hover:text-primary transition-colors duration-300" %>
+
+    <% else %>
+
+        <p class="text-sm py-2 cursor-pointer text-center hover:text-primary transition-colors duration-300"
+            data-action="click->toggle-login#toggleOverlayLogin">Login</p>
+        <div class="w-full h-[1px] bg-slate-300 rounded-full my-2"></div>
+        <p class="text-sm py-2 cursor-pointer text-center hover:text-primary transition-colors duration-300"
+            data-action="click->toggle-login#toggleOverlaySignup">Sign Up</p>
+    <% end %>
+</div>

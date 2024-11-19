@@ -3,10 +3,10 @@
     data-action="click->toggle-login#closeOnOverlayClick">
 
     <turbo-frame id="modalSignup">
-        <%= render "shared/form-signup" %>
+        <%= render "shared/form-signup", resource: @resource, resource_name: @resource_name %>
     </turbo-frame>
 
     <turbo-frame id="modalLogin">
-        <%= render "shared/form-login" %>
+        <%= render "shared/form-login", resource: @resource, resource_name: @resource_name %>
     </turbo-frame>
 </div>
