@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'wigs/index'
+  resources :wigs, only:[:index, :show, :new, :create]
   root to: "wigs#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
