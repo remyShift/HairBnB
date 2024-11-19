@@ -8,14 +8,14 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "email",
-                             class: "border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full",
+                             class: "border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full focus:border-primary focus:outline-none",
                              placeholder: "john.doe@example.com" }%>
     <%= f.input :password,
                 required: true,
                 hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                 input_html: { autocomplete: "new-password",
-                             class: "border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full",
+                             class: "border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full focus:border-primary focus:outline-none",
                              placeholder: "********" } %>
-    <%= f.button :submit, "Login", class: "bg-primary text-white rounded-md w-1/2 p-2 hover:bg-primary/80" %>
+    <%= f.button :submit, "Login", class: "bg-primary text-white rounded-md w-1/2 p-2 hover:bg-primary/80 cursor-pointer" %>
   </div>
 <% end %>
