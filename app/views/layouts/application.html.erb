@@ -16,7 +16,9 @@
   <body>
     <%= render "shared/navbar" %>
     <%= yield %>
-    <p class="notice"><%= notice %></p>
+    <div id="flash">
+      <%= render "shared/flash", notice: notice %>
+    </div>    
     <p class="alert"><%= alert %></p>
   </body>
 </html>

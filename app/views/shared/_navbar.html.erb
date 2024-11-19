@@ -5,9 +5,11 @@
     <% if user_signed_in? %>
         <div class="flex items-center gap-3">
             <p class="text-sm text-gray-600">
-                Welcome, <span class="font-bold text-xl text-primary font-kaushan"><%= current_user.first_name %></span>
+                Welcome, <span class="font-bold text-xl text-primary font-kaushan hover:underline transition-all duration-300 cursor-pointer"
+                    data-action="click->toggle-login#toggle">
+                    <%= current_user.first_name %>
+                </span>
             </p>
-            <i class="fa-solid fa-user-large text-xl cursor-pointer text-primary" data-action="click->toggle-login#toggle"></i>
         </div>
     <% else %>
         <i class="fa-solid fa-user-large text-xl cursor-pointer" data-action="click->toggle-login#toggle"></i>
