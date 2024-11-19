@@ -10,7 +10,7 @@ p "Seeding"
            material: ["synthetic", "natural"].sample,
            hair_style: ["curly", "afro", "straight"].sample,
            length: Faker::Creature::Dog.coat_length,
-           address: ["Lyon", "Paris", "Marseille", "Grenoble"].sample,
+           address: ["Lyon", "Paris", "Marseille", "Grenoble", "Saint Etienne"].sample,
            color: Faker::Color.color_name,
            price: rand(20..200),
            image: Faker::Avatar.image

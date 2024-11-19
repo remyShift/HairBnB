@@ -1,8 +1,7 @@
-<div>
+<div data-controller="search-wigs">
  <%= render 'shared/searchbar' %>
+ <%= render 'shared/wigcard' %>
 </div>
-<%= render 'shared/button' %>
-<%= render 'shared/wigcard' %>
 <p><%= link_to "Create new wig", new_wig_path %></p>
 <% @wigs.each do |wig|%>
 <h2><%= link_to wig.name, wig_path(wig) %></p>
