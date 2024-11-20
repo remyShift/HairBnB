@@ -1,0 +1,23 @@
+
+<h1>Wig Details</h1>
+Your wig: <%= @wig.name %></p>
+<div class="flex flex-row gap-16 justify-between">
+<div class="d-flex flex_col w-6/12 px-2 bg-white-800 border rounded-lg pl-4 pb-4 pt-4 shadow-lg shadow-black-500/50">
+  <div class ="">
+
+    <div class="flex justify-center p-4 border rounded-lg bg-gray-800 w-full h-64">
+    <img class=" h-auto rounded-lg" src="<%= @wig.image %>" alt="<%= @wig.name %>" />
+    </div>
+  </div>
+    <div class="d-flex flex_col text-black">
+
+      <p class = >material :<%= @wig.material  %> ; hair style: <%=@wig.hair_style %> ; address: <%= @wig.address %> ; color: <%= @wig.color %> ; price: <%= number_to_currency(@wig.price) %>.</p>
+    </div>
+  </div>
+    <div class ="bg-grey-500 rounded-lg px-2 pt-4 border shadow-lg shadow-black-500/50  w-1/4 flex flex-col justify-center ">
+        <h2 class ="">20$/day</h2>
+        <p>from <input type="text" placeholder="00/00/0000"></p>
+        <p>to <input type="text" placeholder="00/00/0000"></p>
+        <button class="inline-flex items-center px-3 py-2 text-sm bg-primary hover:bg-heavyprimary  w-20 text-white font-bold py-2 px-4 border-b-4 border-heavyprimary hover:border-heavyprimary rounded">book it now!</button>
+    </div>
+</div>
