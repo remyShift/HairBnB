@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 input:focus {
-    outline: none;
-} 
+    @apply outline-none;
+}
+
+.btn {
+    @apply inline-flex items-center px-3 py-2 text-sm font-bold text-white bg-primary hover:bg-heavyprimary border-b-4 border-heavyprimary hover:border-heavyprimary rounded;
+}
