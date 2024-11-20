@@ -1,11 +1,45 @@
 <%= simple_form_for(wig) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :material %>
-  <%= f.input :hair_style %>
-  <%= f.input :length %>
-  <%= f.input :address %>
-  <%= f.input :color %>
-  <%= f.input :price %>
-  <%= f.input :image %>
-  <%= f.submit %>
+<div class="my-4 flex flex-col items-center gap-2">
+    <%= f.input :name,
+                required: true,
+                autofocus: true,
+                input_html: { class: "w-[80vw] md:w-[50vw] border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full focus:border-primary focus:outline-none",
+                              placeholder: "Blue long shiny wig" }
+                %>
+    <%= f.input :material,
+                required: true,
+                :collection => Wig::MATERIALS,
+                :prompt => "Select material",
+                input_html: { class: "w-[80vw] md:w-[50vw] border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full focus:border-primary focus:outline-none" }
+                %>
+
+    <%= f.input :hair_style,
+                required: true,
+                :collection => Wig::HAIRSTYLES,
+                :prompt => "Select hair style",
+                input_html: { class: "w-[80vw] md:w-[50vw] border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full focus:border-primary focus:outline-none" } %>
+    <%= f.input :length,
+                required: true,
+                :collection => Wig::LENGTHS,
+                :prompt => "Select length",
+                input_html: { class: "w-[80vw] md:w-[50vw] border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full focus:border-primary focus:outline-none" } %>
+    <%= f.input :address,
+                required: true,
+                input_html: { class: "w-[80vw] md:w-[50vw] border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full focus:border-primary focus:outline-none",
+                              placeholder: "21 rue des Capucins, 69001 Lyon" } %>
+    <%= f.input :color,
+                required: true,
+                input_html: { class: "w-[80vw] md:w-[50vw] border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full focus:border-primary focus:outline-none",
+                              placeholder: "Blue" } %>
+    <%= f.input :price,
+                required: true,
+                input_html: { class: "w-[80vw] md:w-[50vw] border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full focus:border-primary focus:outline-none",
+                              placeholder: "150" } %>
+    <%= f.input :image,
+                required: true,
+                input_html: { class: "w-[80vw] md:w-[50vw] border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full focus:border-primary focus:outline-none",
+                              placeholder: "www.lewagon.com" } %>
+    <%= f.button :submit, "Create",
+                 class: "btn w-[80vw] md:w-[50vw]" %>
+  </div>
 <% end %>
