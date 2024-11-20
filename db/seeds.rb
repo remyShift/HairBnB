@@ -8,6 +8,10 @@ Review.destroy_all
 p "Beware, for I am destroying all wigs!"
 Wig.destroy_all
 
+# Destroy all Users
+p "Beware, for I am destroying all users!"
+User.destroy_all
+
 # Create Users before creating wigs and reviews
 p "Creating users..."
 
