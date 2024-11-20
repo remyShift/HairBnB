@@ -7,31 +7,24 @@ class Users::SessionsController < Devise::SessionsController
   # def new
   #   super
   # end
+  def show
+    @user = current_user
+  end
 
   # POST /resource/sign_in
   def create
-    # Remplacez build_resource par User.new ou le modèle approprié
-    resource = User.new(sign_in_params)
-    
-    resource.save
-    yield resource if block_given?
-    if resource.persisted?
-      if resource.active_for_authentication?
-        set_flash_message! :notice, :signed_in
-        sign_in(resource_name, resource)
-        respond_with resource, location: after_sign_in_path_for(resource)
-      else
-        set_flash_message! :notice, :"signed_in_but_#{resource.inactive_message}"
-        expire_data_after_sign_in!
-        respond_with resource, location: after_inactive_sign_in_path_for(resource)
-      end
+    self.resource = warden.authenticate(auth_options)
+    if resource
+      set_flash_message!(:notice, :signed_in)
+      sign_in(resource_name, resource)
+      respond_with resource, location: after_sign_in_path_for(resource)
     else
-      clean_up_passwords resource
-      set_minimum_password_length
+      self.resource = User.new(sign_in_params)
+      flash.now[:alert] = "Invalid email or password."
       @show_modal_login = true
       respond_to do |format|
         format.html { render "shared/form-login", status: :unprocessable_entity }
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("modalLogin", partial: "shared/form-login", locals: { resource: resource }) }
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("modalLogin", partial: "shared/modal-login", locals: { resource: resource }) }
       end
     end
   end

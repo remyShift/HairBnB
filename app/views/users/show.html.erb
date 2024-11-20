@@ -1,0 +1,31 @@
+<h2 class="text-4xl font-bold font-kaushan text-primary">Your profile</h2>
+<div class="flex flex-col justify-center mt-4 gap-4">
+    <p class="text-lg"><span class="font-bold">Name:</span> <%= @user.first_name %> <%= @user.last_name %></p>
+    <p class="text-lg"><span class="font-bold">Email:</span> <%= @user.email %></p>
+    <p class="text-lg"><span class="font-bold">Joined:</span> <%= @user.created_at.strftime("%B %Y") %></p>
+    <%= link_to "Edit profile", edit_user_registration_path, class: "bg-primary text-white px-4 py-2 rounded-md w-fit hover:bg-primary/80" %>
+</div>
+
+<div class="w-full h-[1px] bg-slate-200 my-4"></div>
+
+<div class="flex flex-col justify-center mt-4 gap-4">
+    <h3 class="text-2xl font-bold font-kaushan text-primary">Your wigs</h3>
+    <% if @wigs.empty? %>
+        <p class="text-lg">You have no wigs yet.</p>
+        <%= link_to "Add a wig", new_wig_path, class: "bg-primary text-white px-4 py-2 rounded-md w-fit hover:bg-primary/80" %>
+    <% else %>
+        <%= render 'wigs/wigcard' %>
+    <% end %>
+</div>
+
+<div class="w-full h-[1px] bg-slate-200 my-4"></div>
+
+<div class="flex flex-col justify-center mt-4 gap-4">
+    <h3 class="text-2xl font-bold font-kaushan text-primary">Your bookings</h3>
+    <% if @bookings.empty? %>
+        <p class="text-lg">You have no bookings yet.</p>
+        <%= link_to "Browse wigs", wigs_path, class: "bg-primary text-white px-4 py-2 rounded-md w-fit hover:bg-primary/80" %>
+    <% else %>
+        <%= render 'bookings/bookingcard' %>
+    <% end %>
+</div>
