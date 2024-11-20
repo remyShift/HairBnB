@@ -1,0 +1,27 @@
+<div class =" flex justify-center min-h-screen bg-gray-100 flex-col mx-4 px-2">
+  <h1>Wig Details</h1>
+  Your wig: <%= @wig.name %></p>
+  <div class="flex flex-row gap-16">
+    <div class="d-flex flex_col w-6/12 px-2 bg-white-500 border">
+      <div class ="">
+
+        <img class="p-4  border text-white" src="<%= @wig.image %>" alt="<%= @wig.name %>" />
+      </div>
+        <div class="d-flex flex_col">
+
+          <p class = ><%= @wig.material  %></p>
+          <p class =><%= @wig.hair_style %></p>
+          <p class =><%= @wig.address %></p>
+          <p class =><%= @wig.color %></p>
+          <p class =><%= number_to_currency(@wig.price) %></p>
+        </div>
+      </div>
+        <div class ="">
+            <h2 class ="">20$/day</h2>
+            <p>from <input type="text" placeholder="00/00/0000"></p>
+            <p>to <input type="text" placeholder="00/00/0000"></p>
+            <button>book it now!</button>
+  </div>
+
+    </div>
+</div>
