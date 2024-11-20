@@ -18,8 +18,12 @@ class Users::SessionsController < Devise::SessionsController
       set_flash_message!(:notice, :signed_in)
       sign_in(resource_name, resource)
       respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.replace("overlay", partial: "shared/modal", locals: { resource: resource }) }
-        format.html { redirect_to root_path }
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.replace("overlay", partial: "shared/modal", locals: { resource: resource }),
+            turbo_stream.replace("navbar", partial: "shared/navbar", locals: { resource: resource })
+          ]
+        end
       end
     else
       self.resource = User.new(sign_in_params)
