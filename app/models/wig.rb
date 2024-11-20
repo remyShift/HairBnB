@@ -4,6 +4,7 @@ class Wig < ApplicationRecord
   HAIRSTYLES = ["straight", "curly", "wavy", "afro"]
 
   has_many :reviews
+  has_one_attached :wig_image
  
   validates :name, :material, :color, :hair_style, :length, :address, :price, :image, presence: true
   validates :length, inclusion: { in: LENGTHS,
