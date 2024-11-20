@@ -39,10 +39,10 @@
                 required: true,
                 input_html: { class: "w-[80vw] md:w-[50vw] border border-slate-600 rounded-md p-2 flex flex-col gap-2 focus:border-primary focus:outline-none",
                               placeholder: "150" } %>
-    <%= f.input :image,
+    <%= f.input :wig_image, as: :file,
                 required: true,
-                input_html: { class: "w-[80vw] md:w-[50vw] border border-slate-600 rounded-md p-2 flex flex-col gap-2 focus:border-primary focus:outline-none",
-                              placeholder: "www.lewagon.com" } %>
+                input_html: { class: "w-[80vw] md:w-[50vw] border border-slate-600 rounded-md p-2 flex flex-col gap-2 focus:border-primary focus:outline-none" }
+                %>
     <%= f.button :submit, "Create",
                  class: "btn w-[80vw] md:w-[50vw]" %>
   </div>
