@@ -2,7 +2,7 @@
   <% wigs.each do |wig| %>
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
       <%= link_to wig_path(wig) do %>
-        <img class="rounded-t-lg" src="<%= wig.image %>" alt="<%= wig.name %>" />
+        <%= cl_image_tag wig.wig_image.key, class: "rounded-t-lg" %>
       <% end %>
 
       <div class="p-5">
