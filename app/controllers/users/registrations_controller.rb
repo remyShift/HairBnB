@@ -19,11 +19,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
         sign_up(resource_name, resource)
-        respond_with resource, location: after_sign_up_path_for(resource)
+        respond_to do |format|
+          format.turbo_stream do
+            render turbo_stream: [
+              turbo_stream.replace("overlay", partial: "shared/modal", locals: { resource: resource }),
+              turbo_stream.replace("navbar", partial: "shared/navbar", locals: { resource: resource })
+            ]
+          end
+        end
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!
-        respond_with resource, location: after_inactive_sign_up_path_for(resource)
+        respond_to do |format|
+          format.turbo_stream do
+            render turbo_stream: [
+              turbo_stream.replace("overlay", partial: "shared/modal", locals: { resource: resource }),
+              turbo_stream.replace("navbar", partial: "shared/navbar", locals: { resource: resource })
+            ]
+          end
+        end
       end
     else
       clean_up_passwords resource
@@ -64,7 +78,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :email, :password, :password_confirmation])
   end
 
   # If you have extra params to permit, append them to the sanitizer.

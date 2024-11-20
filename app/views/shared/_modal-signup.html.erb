@@ -4,8 +4,6 @@
     <h2 class="text-2xl font-bold text-center font-kaushan text-primary">Sign up</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
-
       <div class="my-4 flex flex-col items-center gap-2">
         <%= f.input :first_name,
                     required: true, 
@@ -27,7 +25,6 @@
                                   placeholder: "john.doe@example.com" }%>
         <%= f.input :password,
                     required: true,
-                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                     input_html: { autocomplete: "new-password",
                                   class: "border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full focus:border-primary focus:outline-none",
                                   placeholder: "********" } %>
@@ -36,7 +33,7 @@
                     input_html: { autocomplete: "new-password",
                                   class: "border border-slate-600 rounded-md p-2 flex flex-col gap-2 w-full focus:border-primary focus:outline-none",
                                   placeholder: "********" } %>
-        <%= f.button :submit, "Sign up", class: "bg-primary text-white rounded-md w-1/2 p-2 hover:bg-primary/80 cursor-pointer" %>
+        <%= f.button :submit, "Sign up", class: "btn" %>
       </div>
     <% end %>
   </div>

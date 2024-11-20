@@ -1,5 +1,5 @@
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-  <% @wigs.each do |wig| %>
+  <% wigs.each do |wig| %>
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
       <%= link_to wig_path(wig) do %>
         <img class="rounded-t-lg" src="<%= wig.image %>" alt="<%= wig.name %>" />
@@ -30,7 +30,7 @@
         <p class="mb-3 font-normal text-gray-700">
           Price: $<%= wig.price %>
         </p>
-        <%= link_to wig_path(wig), class: "inline-flex items-center px-3 py-2 text-sm bg-primary hover:bg-heavyprimary text-white font-bold py-2 px-4 border-b-4 border-heavyprimary hover:border-heavyprimary rounded" do %>
+        <%= link_to wig_path(wig), class: "btn" do %>
           Read more
           <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
