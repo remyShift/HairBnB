@@ -23,9 +23,9 @@ p "Seeding wigs..."
 30.times do
   wig = Wig.create!(
     name: Faker::Creature::Dog.breed,
-    material: ["synthetic", "natural"].sample,
-    hair_style: ["curly", "afro", "straight"].sample,
-    length: Faker::Creature::Dog.coat_length,
+    material: Wig::MATERIALS.sample,
+    hair_style: Wig::HAIRSTYLES.sample,
+    length: Wig::LENGTHS.sample,
     address: ["Lyon", "Paris", "Marseille", "Grenoble"].sample,
     color: Faker::Color.color_name,
     price: rand(20..200),
