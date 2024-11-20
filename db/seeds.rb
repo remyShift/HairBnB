@@ -25,7 +25,7 @@ p "Seeding wigs..."
     name: Faker::Creature::Dog.breed,
     material: ["synthetic", "natural"].sample,
     hair_style: ["curly", "afro", "straight"].sample,
-    length: Faker::Creature::Dog.coat_length,
+    length: "long",
     address: ["Lyon", "Paris", "Marseille", "Grenoble"].sample,
     color: Faker::Color.color_name,
     price: rand(20..200),
@@ -37,7 +37,7 @@ p "Seeding wigs..."
     user = User.order('RANDOM()').first  # Select a random user
     if user  # Ensure that we have a valid user
       Review.create!(
-        comment: Faker::Lorem.sentence,
+        comment: Faker::Lorem.paragraphs,
         rating: rand(1..5),
         user_id: user.id,  # Use user_id instead of user
         wig_id: wig.id     # Use wig_id instead of wig
