@@ -1,3 +1,5 @@
+
+
 <h1>Wig details</h1>
 <p>Your wig name: <%= @wig.name %></p>
 <h2><%= link_to "Update this Wig", edit_wig_path(@wig) %></p>
@@ -5,3 +7,5 @@
   wig_path(@wig),
   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
 %>
+
+<%= render 'shared/reviews' %>
