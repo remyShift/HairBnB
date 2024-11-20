@@ -1,7 +1,18 @@
 class WigsController < ApplicationController
   before_action :set_wig, only: [:show, :edit, :update, :destroy]
   def index
-    @wigs = Wig.all
+    puts params[:product]
+    puts params[:location]
+    if params[:location]
+      @wigs = Wig.where(address: params[:location])
+    else
+      @wigs = Wig.all
+    end
+
+    respond_to do |format|
+      format.html
+      format.json # Follows the classic Rails flow and look for a create.json view
+    end
   end
 
   def show
