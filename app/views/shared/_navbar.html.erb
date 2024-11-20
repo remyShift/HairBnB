@@ -5,7 +5,7 @@ class="bg-slate-200 w-full h-[10vh] min-h-16 flex justify-between items-center p
 
     <% if user_signed_in? %>
         <div class="flex items-center gap-3">
-            <%= cl_image_tag current_user.profile_image.key, class: "w-16 h-16 rounded-full object-cover" %>
+            <%= cl_image_tag current_user.profile_image.key, class: "w-10 h-10 rounded-full object-cover border-2 border-primary" %>
             <p class="text-sm text-gray-600">
                 Welcome, <span class="font-bold text-xl text-primary font-kaushan hover:underline transition-all duration-300 cursor-pointer"
                     data-action="click->toggle-login#toggle">
