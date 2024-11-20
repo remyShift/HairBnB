@@ -45,7 +45,7 @@ export default class extends Controller {
   }
 
   closeOnOverlayClick(event) {
-    if (event.target === this.overlayTarget && !this.modalSignupTarget.classList.contains("hidden")) {
+    if (event.target === this.overlayTarget || (!this.modalSignupTarget.classList.contains("hidden") && !this.modalLoginTarget.classList.contains("hidden"))) {
       this.overlayTarget.classList.add("opacity-0")
       this.modalSignupTarget.classList.add("translate-y-10")
       this.modalLoginTarget.classList.add("translate-y-10")
