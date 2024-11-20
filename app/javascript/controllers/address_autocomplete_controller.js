@@ -1,4 +1,3 @@
-import { Controller } from "@hotwired/stimulus"
 // app/javascript/controllers/address_autocomplete_controller.js
 import { Controller } from "@hotwired/stimulus"
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
@@ -10,6 +9,7 @@ export default class extends Controller {
   static targets = ["address"]
 
   connect() {
+    console.log("geocoder connected")
     this.geocoder = new MapboxGeocoder({
       accessToken: this.apiKeyValue,
       types: "country,region,place,postcode,locality,neighborhood,address"
