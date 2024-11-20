@@ -1,10 +1,14 @@
 class WigsController < ApplicationController
   before_action :set_wig, only: [:show, :edit, :update, :destroy]
   def index
-    puts params[:product]
-    puts params[:location]
-    if params[:location]
-      @wigs = Wig.where(address: params[:location])
+    location = params[:location].downcase if params[:location]
+    product = params[:product].downcase if params[:product]
+    if params[:location].present? && params[:product].present?
+      @wigs = Wig.where("lower(address) LIKE ?", "%" + location + "%").where("lower(name) LIKE ?", "%" + product + "%")
+    elsif params[:location].present?
+      @wigs = Wig.where("lower(address) LIKE ?", "%" + location + "%")
+    elsif params[:product].present?
+      @wigs = Wig.where("lower(name) LIKE ?", "%" + product + "%")
     else
       @wigs = Wig.all
     end

@@ -9,7 +9,7 @@ export default class extends Controller {
     "wigLocation"
   ]
   connect() {
-    console.log("search functionnality");
+
   }
 
   search(event) {
