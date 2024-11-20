@@ -67,7 +67,7 @@ class WigsController < ApplicationController
                                 :length,
                                 :address,
                                 :price,
-                                :image
+                                :wig_image
                               )
   end
 end

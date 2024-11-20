@@ -1,7 +1,4 @@
-
-
-<h1>Wig details</h1>
-<p>Your wig name: <%= @wig.name %></p>
+<%= render "shared/wigcard_show" %>
 <h2><%= link_to "Update this Wig", edit_wig_path(@wig) %></p>
 <%= link_to "Delete",
   wig_path(@wig),
