@@ -1,9 +1,10 @@
-<div>
- <%= render 'shared/searchbar' %>
-</div>
-<div class="container mx-4">
-<%= render 'shared/wigcard' %>
-<p><%= link_to "Create new wig", new_wig_path %></p>
 
-<%= render 'shared/button' %>
+<div class="container"
+     data-controller="search-wigs">
+  <%= render 'shared/searchbar' %>
+  <div data-search-wigs-target="wigsContainer">
+    <%= render 'shared/wigcard', wigs: @wigs %>
+  </div>
+  <p><%= link_to "Create new wig", new_wig_path %></p>
+  <%= render 'shared/button' %>
 </div>
