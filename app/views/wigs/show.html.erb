@@ -3,10 +3,12 @@
     <%= render 'shared/wigcard_show' %>
 
     <h2 class="mt-6">
-      <p class="inline-flex items-center px-3 py-2 text-sm bg-primary hover:bg-heavyprimary text-white font-bold py-2 px-4 border-b-4 border-heavyprimary hover:border-heavyprimary rounded"><%= link_to "Update this Wig", edit_wig_path(@wig) %></p>
-      <p class="inline-flex items-center px-3 py-2 text-sm bg-primary hover:bg-heavyprimary  w-20 text-white font-bold py-2 px-4 border-b-4 border-heavyprimary hover:border-heavyprimary rounded"><%= link_to "Delete",
-      wig_path(@wig),
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
+      <%= link_to "Update this Wig", edit_wig_path(@wig), class: "btn" %>
+      <%= link_to "Delete",
+        wig_path(@wig),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+        class: "btn"
+      %>
     </h2>
     <div class="mt-2">
       <%= render 'shared/reviews' %>
