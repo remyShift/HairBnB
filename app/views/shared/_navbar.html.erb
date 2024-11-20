@@ -11,6 +11,7 @@ class="bg-slate-200 w-full h-[10vh] min-h-16 flex justify-between items-center p
                     <%= current_user.first_name %>
                 </span>
             </p>
+            <%= link_to "Add a Wig", new_wig_path, class:"btn" %>
         </div>
     <% else %>
         <i class="fa-solid fa-user-large text-xl cursor-pointer" data-action="click->toggle-login#toggle"></i>
