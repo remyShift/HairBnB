@@ -5,6 +5,7 @@ export default class extends Controller {
   static targets = ["loginSignup", "overlay", "modalSignup", "modalLogin"];
 
   connect() {
+    console.log("ToggleLoginController connected");
   }
 
   toggle() {
