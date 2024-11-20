@@ -1,34 +1,40 @@
-<article class="max-h-48 overflow-auto">
-    <div class="flex items-center mb-4">
-        <img class="w-10 h-10 me-4 rounded-full" src="https://imgs.search.brave.com/lTn7KyriSZVgKnqG6QFkXAlYbO2jTXQ2nXLwld9dPJM/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/YS50cmFuc2Zlcm1h/cmt0LnRlY2hub2xv/Z3kvcG9ydHJhaXQv/YmlnLzE4OTM1LTE1/NjYzMTI5MDYuanBn/P2xtPTE" alt="">
+<div class="my-8">
+  <% @wig.reviews.each do |review| %>
+    <article class="max-h-48 overflow-auto">
+      <div class="flex items-center mb-4">
+        <!-- Image de l'utilisateur -->
+        <img class="w-10 h-10 me-4 rounded-full" src="https://imgs.search.brave.com/9TuWy5Tv_HSV5j0UXiUqPvXoUxuSrl65waVmklOH9OM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMud2lraWEubm9j/b29raWUubmV0L2hl/cm9lcy1mci9pbWFn/ZXMvYS9hNC8yNTBw/eC1OZXNzX1NTQjQu/cG5nL3JldmlzaW9u/L2xhdGVzdD9jYj0y/MDIwMTIwODEzMDI1/MCZwYXRoLXByZWZp/eD1mcg">
         <div class="font-medium">
-            <p>User name</p>
+          <p><%= review.user.first_name %></p> <!-- Affichage du prénom de l'utilisateur -->
         </div>
-    </div>
-    <div class="flex items-center mb-1 space-x-1 rtl:space-x-reverse">
-        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+      </div>
+      <div class="flex items-center mb-1 space-x-1 rtl:space-x-reverse">
+        <!-- Affichage des étoiles (ici 4/5) -->
+        <% rating = review.rating.round %> <!-- Arrondir la note -->
+        <% rating.times do %>
+          <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-        </svg>
-        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
+          </svg>
+        <% end %>
+
+        <% (5 - rating).times do %>
+          <svg class="w-4 h-4 text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
             <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-        </svg>
-        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-        </svg>
-        <svg class="w-4 h-4 text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-        </svg>
-        <svg class="w-4 h-4 text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 20">
-            <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
-        </svg>
-        <h3 class="ms-2 text-sm font-semibold text-gray-900">La perruque de ma vie</h3>
-    </div>
-    <p class="mb-2 text-gray-500">Franchement, cette perruque rose est une tuerie ! 😍💖 Je l’ai portée à une soirée, et tout le monde n’arrêtait pas de me demander où je l'avais trouvée. Elle est super légère, super confortable, et en plus elle tient bien en place toute la soirée sans glisser. La couleur est juste folle, hyper flashy et parfaite pour attirer l'attention – ça met vraiment l'ambiance ! 🎉🎉 Si tu veux briller à ta prochaine fête, cette perruque est clairement un must-have. Sérieusement, je vais en acheter une autre juste au cas où !</p>
-    <aside>
+          </svg>
+        <% end %>
+
+        <h3 class="ms-2 text-sm font-semibold text-gray-900">La best perruque ever</h3> <!-- Titre de la review -->
+      </div>
+      <p class="mb-2 text-gray-500"><%= review.comment %></p> <!-- Contenu de la review -->
+
+      <aside>
         <p id="helpful-count" class="mt-1 text-xs text-gray-500">19 people found this helpful</p>
-    <div class="flex items-center mt-3">
-        <button id="helpful-button" class="px-2 py-1.5 text-xs font-medium text-white focus:outline-none bg-primary rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-4 focus:ring-gray-100">Helpful</button>
-    </div>
+        <div class="flex items-center mt-3">
+          <%# <button id="helpful-button" class="px-2 py-1.5 text-xs font-medium text-white focus:outline-none bg-primary rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary focus:z-10 focus:ring-4 focus:ring-gray-100 mx-4">
+            Helpful
+          </button> %>
         </div>
-    </aside>
-</article>
+      </aside>
+    </article>
+  <% end %>
+</div>
