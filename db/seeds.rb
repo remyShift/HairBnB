@@ -21,23 +21,6 @@ user_image = [
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732113389/h1bjhjdgcrmq3mdmrq7q.jpg",
 ]
 
-10.times do
-  new_user = User.new(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    password: 'password123',
-  )
-
-  image_url = user_image.sample
-  new_user.profile_image.attach(io: URI.open(image_url), filename: "profile_image.jpg")
-  new_user.save
-end
-p "10 users created!"
-
-# Creates seed data for wigs
-p "Seeding wigs..."
-
 cloudinary_images = [
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732110869/paxd7lrtjwfntf3myp7f.jpg", 
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732110863/a0jmcil2dvho2uclogp7.jpg",
@@ -54,38 +37,53 @@ cloudinary_images = [
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732109193/pzz0mryvwyuehof8awbx.jpg",
 ]
 
-
-30.times do
-  new_wig = Wig.new(
-    name: Faker::Creature::Dog.breed,
-    material: Wig::MATERIALS.sample,
-    hair_style: Wig::HAIRSTYLES.sample,
-    length: Wig::LENGTHS.sample,
-    address: ["Lyon", "Paris", "Marseille", "Grenoble"].sample,
-    color: Faker::Color.color_name,
-    price: rand(20..200),
+10.times do
+  new_user = User.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: 'password123',
   )
 
-  image_url = cloudinary_images.sample
-  new_wig.wig_image.attach(io: URI.open(image_url), filename: "wig_image.jpg")
+  image_url = user_image.sample
+  new_user.profile_image.attach(io: URI.open(image_url), filename: "profile_image.jpg")
+
   
-  if new_wig.save
-    # Create random reviews for the wig only if the wig is saved
-    rand(3..7).times do
-      user = User.order('RANDOM()').first
-      if user
-        Review.create!(
-          comment: Faker::Lorem.sentence,
-          rating: rand(1..5),
-          user_id: user.id,
-          wig_id: new_wig.id
-        )
+  if new_user.save
+    rand(1..5).times do
+      new_wig = Wig.new(
+        name: Faker::Creature::Dog.breed,
+        material: Wig::MATERIALS.sample,
+        hair_style: Wig::HAIRSTYLES.sample,
+        length: Wig::LENGTHS.sample,
+        address: ["Lyon", "Paris", "Marseille", "Grenoble"].sample,
+        color: Faker::Color.color_name,
+        price: rand(20..200),
+        user_id: new_user.id
+      )
+
+      image_url = cloudinary_images.sample
+      new_wig.wig_image.attach(io: URI.open(image_url), filename: "wig_image.jpg")
+
+      unless new_wig.save
+        p "Failed to save wig: #{new_wig.errors.full_messages.join(", ")}"
       end
     end
   else
-    p "Failed to save wig: #{new_wig.errors.full_messages.join(", ")}"
+    p "Failed to save user: #{new_user.errors.full_messages.join(", ")}"
   end
 end
 
-p "#{Wig.count} wigs created!"
-p "#{Review.count} reviews created!"
+Wig.find_each do |wig|
+  rand(3..7).times do
+    Review.create!(
+      comment: Faker::Lorem.sentence,
+      rating: rand(1..5),
+      user_id: User.order('RANDOM()').first.id,
+      wig_id: wig.id
+    )
+  end
+end
+
+p "-----------------Seeding completed----------------"
+p "#{User.count} users created who post #{Wig.count} wigs !"
