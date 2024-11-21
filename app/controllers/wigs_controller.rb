@@ -2,21 +2,23 @@ class WigsController < ApplicationController
   before_action :set_wig, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:create]
   def index
-    location = params[:location].downcase if params[:location]
-    product = params[:product].downcase if params[:product]
-    if params[:location].present? && params[:product].present?
-      @wigs = Wig.where("lower(address) LIKE ?", "%" + location + "%").where("lower(name) LIKE ?", "%" + product + "%")
-    elsif params[:location].present?
-      @wigs = Wig.where("lower(address) LIKE ?", "%" + location + "%")
-    elsif params[:product].present?
-      @wigs = Wig.where("lower(name) LIKE ?", "%" + product + "%")
-    else
-      @wigs = Wig.all
+    puts "-----------------------------------"
+    puts "params: #{params}"
+    puts "-----------------------------------"
+
+    if params[:search].present?
+      location = params[:search][:location].downcase if params[:search][:location].present?
+      product = params[:search][:product].downcase if params[:search][:product].present?
     end
 
-    respond_to do |format|
-      format.html
-      format.json # Follows the classic Rails flow and look for a create.json view
+    if location && product
+      @wigs = Wig.where("lower(address) LIKE ?", "%#{location}%").where("lower(name) LIKE ?", "%#{product}%")
+    elsif location
+      @wigs = Wig.where("lower(address) LIKE ?", "%#{location}%")
+    elsif product
+      @wigs = Wig.where("lower(name) LIKE ?", "%#{product}%")
+    else
+      @wigs = Wig.all
     end
 
     @markers = @wigs.geocoded.map do |wig|
