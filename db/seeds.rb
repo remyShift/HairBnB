@@ -1,4 +1,5 @@
 require 'open-uri'
+Faker::Config.locale = 'fr'
 
 # Destroying all Reviews first to avoid foreign key violation
 p "Beware, for I am destroying all reviews!"
@@ -55,7 +56,7 @@ cloudinary_images = [
         material: Wig::MATERIALS.sample,
         hair_style: Wig::HAIRSTYLES.sample,
         length: Wig::LENGTHS.sample,
-        address: Faker::Address.city,
+        address: Faker::Address.full_address,
         color: Faker::Color.color_name,
         price: rand(20..200),
         user_id: new_user.id
