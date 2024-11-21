@@ -2,7 +2,7 @@
   <% wigs.each do |wig| %>
     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
       <%= link_to wig_path(wig) do %>
-        <img class="rounded-t-lg" src="<%= wig.image %>" alt="<%= wig.name %>" />
+        <%= cl_image_tag wig.wig_image.key, class: "rounded-t-lg" %>
       <% end %>
 
       <div class="p-5">
@@ -19,16 +19,19 @@
         </div>
 
         <p class="mb-3 font-normal text-gray-700">
-          Material: <%= wig.material %>
+          <span class="font-bold">Material: </span><%= wig.material %>
         </p>
         <p class="mb-3 font-normal text-gray-700">
-          Color: <%= wig.color %>
+          <span class="font-bold">Color: </span><%= wig.color %>
         </p>
         <p class="mb-3 font-normal text-gray-700">
-          Hairstyle: <%= wig.hair_style %>, Length: <%= wig.length %>
+          <span class="font-bold">Hairstyle: </span><%= wig.hair_style %>, <span class="font-bold">Length: </span><%= wig.length %>
         </p>
         <p class="mb-3 font-normal text-gray-700">
-          Price: $<%= wig.price %>
+          <span class="font-bold">Price: </span>$<%= wig.price %>
+        </p>
+        <p class="mb-3 font-normal text-gray-700">
+          <span class="font-bold">Address: </span><%= wig.address %>
         </p>
         <%= link_to wig_path(wig), class: "btn" do %>
           Read more
