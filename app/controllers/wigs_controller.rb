@@ -1,26 +1,40 @@
 class WigsController < ApplicationController
   before_action :set_wig, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:create]
   def index
-    location = params[:location].downcase if params[:location]
-    product = params[:product].downcase if params[:product]
-    if params[:location].present? && params[:product].present?
-      @wigs = Wig.where("lower(address) LIKE ?", "%" + location + "%").where("lower(name) LIKE ?", "%" + product + "%")
-    elsif params[:location].present?
-      @wigs = Wig.where("lower(address) LIKE ?", "%" + location + "%")
-    elsif params[:product].present?
-      @wigs = Wig.where("lower(name) LIKE ?", "%" + product + "%")
+    puts "-----------------------------------"
+    puts "params: #{params}"
+    puts "-----------------------------------"
+
+    if params[:search].present?
+      location = params[:search][:location].downcase if params[:search][:location].present?
+      product = params[:search][:product].downcase if params[:search][:product].present?
+    end
+
+    if location && product
+      @wigs = Wig.where("lower(address) LIKE ?", "%#{location}%").where("lower(name) LIKE ?", "%#{product}%")
+    elsif location
+      @wigs = Wig.where("lower(address) LIKE ?", "%#{location}%")
+    elsif product
+      @wigs = Wig.where("lower(name) LIKE ?", "%#{product}%")
     else
       @wigs = Wig.all
     end
 
-    respond_to do |format|
-      format.html
-      format.json # Follows the classic Rails flow and look for a create.json view
+    @markers = @wigs.geocoded.map do |wig|
+      {
+        lat: wig.latitude,
+        lng: wig.longitude
+      }
     end
   end
 
   def show
     @wig = Wig.find(params[:id])
+    @markers = [{
+        lat: @wig.latitude,
+        lng: @wig.longitude
+      }]
   end
 
   def new
@@ -29,6 +43,7 @@ class WigsController < ApplicationController
 
   def create
     @wig = Wig.new(wig_params)
+    @wig.user = @user
     if @wig.save
       redirect_to wig_path(@wig)
     else
@@ -58,6 +73,10 @@ class WigsController < ApplicationController
     @wig = Wig.find(params[:id])
   end
 
+  def set_user
+    @user = current_user
+  end
+
   def wig_params
     params.require(:wig).permit(
                                 :name,
@@ -67,7 +86,10 @@ class WigsController < ApplicationController
                                 :length,
                                 :address,
                                 :price,
-                                :wig_image
+                                :wig_image,
+                                :latitude,
+                                :longitude,
+                                :user_id
                               )
   end
 end

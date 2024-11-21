@@ -12,18 +12,8 @@ export default class extends Controller {
 
   }
 
-  search(event) {
-    event.preventDefault();
-    console.log(this.wigNameTarget.value, this.wigLocationTarget.value);
-    const url = `${this.formTarget.action}?product=${this.wigNameTarget.value}&location=${this.wigLocationTarget.value}`
-    fetch(url, {
-      method: "GET", // Could be dynamic with Stimulus values
-      headers: { "Accept": "application/json" }
-    })
-      .then(response => response.json())
-      .then((data) => {
-        this.wigsContainerTarget.innerHTML = "";
-        this.wigsContainerTarget.insertAdjacentHTML('afterbegin', data.filtered_wigs)
-      })
+  reset(event) {
+    this.wigNameTarget.innerHTML = "";
+    this.wigLocationTarget.innerHTML = "";
   }
 }

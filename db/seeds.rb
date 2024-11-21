@@ -1,4 +1,5 @@
 require 'open-uri'
+Faker::Config.locale = 'fr'
 
 # Destroying all Reviews first to avoid foreign key violation
 p "Beware, for I am destroying all reviews!"
@@ -50,13 +51,17 @@ cloudinary_images = [
 
   if new_user.save
     rand(1..5).times do
+    color = Faker::Color.color_name
+    length = Wig::LENGTHS.sample
+    hair_style = Wig::HAIRSTYLES.sample
+    name = "#{Faker::Adjective.positive} #{length} wig"
       new_wig = Wig.new(
-        name: Faker::Creature::Dog.breed,
+        name: name,
         material: Wig::MATERIALS.sample,
-        hair_style: Wig::HAIRSTYLES.sample,
-        length: Wig::LENGTHS.sample,
-        address: ["Lyon", "Paris", "Marseille", "Grenoble"].sample,
-        color: Faker::Color.color_name,
+        hair_style: hair_style,
+        length: length,
+        address: "#{Faker::Address.full_address}, France",
+        color: color,
         price: rand(20..200),
         user_id: new_user.id
       )
@@ -75,8 +80,8 @@ end
 
 Wig.find_each do |wig|
   rand(3..7).times do
-    Review.create!(
-      comment: Faker::Lorem.sentence,
+    Review.create(
+      comment: Faker::Lorem.paragraph,
       rating: rand(1..5),
       user_id: User.order('RANDOM()').first.id,
       wig_id: wig.id

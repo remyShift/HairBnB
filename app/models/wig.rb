@@ -5,8 +5,13 @@ class Wig < ApplicationRecord
 
   belongs_to :user
   has_many :reviews
+  has_many :bookings
   has_one_attached :wig_image
- 
+
+  geocoded_by :address
+
+  after_validation :geocode, if: :will_save_change_to_address?
+
   validates :name, :material, :color, :hair_style, :length, :address, :price, :wig_image, presence: true
   validates :length, inclusion: { in: LENGTHS,
     message: "%{value} is not a valid length" }
@@ -14,4 +19,6 @@ class Wig < ApplicationRecord
     message: "%{value} is not a valid length" }
   validates :hair_style, inclusion: { in: HAIRSTYLES,
     message: "%{value} is not a valid length" }
+
+
 end

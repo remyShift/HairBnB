@@ -58,6 +58,9 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
 end
 
+gem "pg_search"
+
+
 gem "cloudinary"
 
 
