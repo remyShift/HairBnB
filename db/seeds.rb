@@ -44,27 +44,10 @@ cloudinary_images = [
     email: Faker::Internet.email,
     password: 'password123',
   )
-<<<<<<< HEAD
-  image_url = cloudinary_images.sample
-  new_wig.wig_image.attach(io: URI.open(image_url), filename: "wig_image.jpg")
-
-  if new_wig.save
-    # Create random reviews for the wig only if the wig is saved
-    rand(3..7).times do
-      user = User.order('RANDOM()').first
-      if user
-        Review.create!(
-          comment: Faker::Lorem.sentence,
-          rating: rand(1..5),
-          user_id: user.id,
-          wig_id: new_wig.id
-        )
-=======
 
   image_url = user_image.sample
   new_user.profile_image.attach(io: URI.open(image_url), filename: "profile_image.jpg")
 
-  
   if new_user.save
     rand(1..5).times do
       new_wig = Wig.new(
@@ -83,7 +66,6 @@ cloudinary_images = [
 
       unless new_wig.save
         p "Failed to save wig: #{new_wig.errors.full_messages.join(", ")}"
->>>>>>> 4890d0af6e62c2cf9a92fffa2424b36df5c4918c
       end
     end
   else

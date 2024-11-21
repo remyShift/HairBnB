@@ -3,6 +3,7 @@ class Wig < ApplicationRecord
   MATERIALS = ["natural", "synthetic"]
   HAIRSTYLES = ["straight", "curly", "wavy", "afro"]
 
+  belongs_to :user
   has_many :reviews
   has_one_attached :wig_image
  
