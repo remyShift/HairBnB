@@ -1,7 +1,7 @@
 <div class="container"
      data-controller="search-wigs">
   <%= render 'shared/searchbar' %>
-  <%# <%= render 'shared/wigs-map' %> %>
+  <%= render 'shared/wigs-map' %>
   <div data-search-wigs-target="wigsContainer">
     <%= render 'shared/wigcard', wigs: @wigs %>
   </div>

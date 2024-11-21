@@ -56,7 +56,7 @@ cloudinary_images = [
         material: Wig::MATERIALS.sample,
         hair_style: Wig::HAIRSTYLES.sample,
         length: Wig::LENGTHS.sample,
-        address: Faker::Address.full_address,
+        address: "#{Faker::Address.full_address}, France",
         color: Faker::Color.color_name,
         price: rand(20..200),
         user_id: new_user.id

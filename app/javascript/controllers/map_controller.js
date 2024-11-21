@@ -18,6 +18,8 @@ export default class extends Controller {
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+    // console.log("markersvalue:", this.markersValue)
+
   }
 
   #addMarkersToMap() {
