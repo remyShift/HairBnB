@@ -2,13 +2,14 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show]
 
   def show
+    @wigs = current_user.wigs
   end
 
   private
 
   def set_user
     @user = current_user
-    @wigs = []
     @bookings = []
+    @wigs =[]
   end
 end
