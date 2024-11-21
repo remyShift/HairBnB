@@ -1,5 +1,6 @@
 class WigsController < ApplicationController
   before_action :set_wig, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:create]
   def index
     location = params[:location].downcase if params[:location]
     product = params[:product].downcase if params[:product]
@@ -17,6 +18,12 @@ class WigsController < ApplicationController
       format.html
       format.json # Follows the classic Rails flow and look for a create.json view
     end
+    @markers = @wigs.geocoded.map do |wig|
+      {
+        lat: wig.latitude,
+        lng: wig.longitude
+      }
+    end
   end
 
   def show
@@ -29,6 +36,7 @@ class WigsController < ApplicationController
 
   def create
     @wig = Wig.new(wig_params)
+    @wig.user = @user
     if @wig.save
       redirect_to wig_path(@wig)
     else
@@ -58,6 +66,10 @@ class WigsController < ApplicationController
     @wig = Wig.find(params[:id])
   end
 
+  def set_user
+    @user = current_user
+  end
+
   def wig_params
     params.require(:wig).permit(
                                 :name,
@@ -67,7 +79,10 @@ class WigsController < ApplicationController
                                 :length,
                                 :address,
                                 :price,
-                                :wig_image
+                                :wig_image,
+                                :latitude,
+                                :longitude,
+                                :user_id
                               )
   end
 end
