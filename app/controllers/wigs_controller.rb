@@ -35,7 +35,6 @@ class WigsController < ApplicationController
         lat: @wig.latitude,
         lng: @wig.longitude
       }]
-
   end
 
   def new
