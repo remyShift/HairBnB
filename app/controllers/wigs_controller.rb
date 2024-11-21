@@ -18,6 +18,7 @@ class WigsController < ApplicationController
       format.html
       format.json # Follows the classic Rails flow and look for a create.json view
     end
+
     @markers = @wigs.geocoded.map do |wig|
       {
         lat: wig.latitude,
@@ -28,6 +29,11 @@ class WigsController < ApplicationController
 
   def show
     @wig = Wig.find(params[:id])
+    @markers = [{
+        lat: @wig.latitude,
+        lng: @wig.longitude
+      }]
+
   end
 
   def new
