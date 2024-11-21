@@ -38,7 +38,7 @@ cloudinary_images = [
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732109193/pzz0mryvwyuehof8awbx.jpg",
 ]
 
-10.times do
+5.times do
   new_user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -50,7 +50,7 @@ cloudinary_images = [
   new_user.profile_image.attach(io: URI.open(image_url), filename: "profile_image.jpg")
 
   if new_user.save
-    rand(1..5).times do
+    rand(3..6).times do
     color = Faker::Color.color_name
     length = Wig::LENGTHS.sample
     hair_style = Wig::HAIRSTYLES.sample
@@ -79,10 +79,10 @@ cloudinary_images = [
 end
 
 Wig.find_each do |wig|
-  rand(3..7).times do
+  rand(3..6).times do
     Review.create(
       comment: Faker::Lorem.paragraph,
-      rating: rand(1..5),
+      rating: rand(3..5),
       user_id: User.order('RANDOM()').first.id,
       wig_id: wig.id
     )
