@@ -31,6 +31,6 @@
         <p class="text-lg">You have no bookings yet.</p>
         <%= link_to "Browse wigs", wigs_path, class: "bg-primary text-white px-4 py-2 rounded-md w-fit hover:bg-primary/80" %>
     <% else %>
-        <%= render 'bookings/bookingcard' %>
+        <%= render 'shared/bookings-cards' %>
     <% end %>
 </div>

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @wigs = current_user.wigs
+    @bookings = current_user.bookings
   end
 
   private
@@ -12,4 +13,5 @@ class UsersController < ApplicationController
     @bookings = []
     @wigs =[]
   end
+
 end
