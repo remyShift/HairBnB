@@ -17,7 +17,7 @@ export default class extends Controller {
     console.log(this.wigNameTarget.value, this.wigLocationTarget.value);
     const url = `${this.formTarget.action}?product=${this.wigNameTarget.value}&location=${this.wigLocationTarget.value}`
     fetch(url, {
-      method: "GET", // Could be dynamic with Stimulus values
+      method: "GET",
       headers: { "Accept": "application/json" }
     })
       .then(response => response.json())
