@@ -1,5 +1,6 @@
 class WigsController < ApplicationController
   before_action :set_wig, only: [:show, :edit, :update, :destroy]
+
   def index
     location = params[:location].downcase if params[:location]
     product = params[:product].downcase if params[:product]

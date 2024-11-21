@@ -16,8 +16,8 @@
         <p><span class="font-bold">Price: </span><%= number_to_currency(@wig.price) %></p>
       </div>
       <div class="flex flex-wrap gap-2">
-        <p><span class="font-bold">Address: </span><%= @wig.address %>, </p>
-        <p><span class="font-bold">Color: </span><%= @wig.color %>, </p>
+        <p><span class="font-bold">Address: </span><%= @wig.address %> </p>
+        <p><span class="font-bold">Color: </span><%= @wig.color %> </p>
       </div>
       <div class="flex flex-wrap items-center gap-2 mt-12">
         <%= cl_image_tag @wig.user.profile_image.key, class: "rounded-full h-12 w-12 border-2 border-primary" %>

@@ -6,6 +6,7 @@ class Wig < ApplicationRecord
   belongs_to :user
   has_many :reviews
   has_one_attached :wig_image
+
   geocoded_by :address
 
   validates :name, :material, :color, :hair_style, :length, :address, :price, :wig_image, presence: true
