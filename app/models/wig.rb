@@ -5,6 +5,7 @@ class Wig < ApplicationRecord
 
   belongs_to :user
   has_many :reviews
+  has_many :bookings
   has_one_attached :wig_image
   geocoded_by :address
 
