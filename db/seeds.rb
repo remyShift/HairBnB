@@ -51,13 +51,17 @@ cloudinary_images = [
 
   if new_user.save
     rand(1..5).times do
+    color = Faker::Color.color_name
+    length = Wig::LENGTHS.sample
+    hair_style = Wig::HAIRSTYLES.sample
+    name = "#{Faker::Adjective.positive} #{length} wig"
       new_wig = Wig.new(
-        name: Faker::Creature::Dog.breed,
+        name: name,
         material: Wig::MATERIALS.sample,
-        hair_style: Wig::HAIRSTYLES.sample,
-        length: Wig::LENGTHS.sample,
+        hair_style: hair_style,
+        length: length,
         address: "#{Faker::Address.full_address}, France",
-        color: Faker::Color.color_name,
+        color: color,
         price: rand(20..200),
         user_id: new_user.id
       )
