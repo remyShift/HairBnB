@@ -19,19 +19,12 @@
         </div>
 
         <p class="mb-3 font-normal text-gray-700">
-          <span class="font-bold">Material: </span><%= wig.material %>
+          <span class="font-bold"><%= number_to_currency(wig.price) %></span>/day
         </p>
+
         <p class="mb-3 font-normal text-gray-700">
-          <span class="font-bold">Color: </span><%= wig.color %>
-        </p>
-        <p class="mb-3 font-normal text-gray-700">
-          <span class="font-bold">Hairstyle: </span><%= wig.hair_style %>, <span class="font-bold">Length: </span><%= wig.length %>
-        </p>
-        <p class="mb-3 font-normal text-gray-700">
-          <span class="font-bold">Price: </span>$<%= wig.price %>
-        </p>
-        <p class="mb-3 font-normal text-gray-700">
-          <span class="font-bold">Address: </span><%= wig.address %>
+          <i class="fa-solid fa-location-dot"></i>
+          <%= wig.address %>
         </p>
         <%= link_to wig_path(wig), class: "btn" do %>
           Read more
