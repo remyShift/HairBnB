@@ -9,7 +9,8 @@ class UsersController < ApplicationController
 
   def set_user
     @user = current_user
-    @bookings = []
+    @bookings =  @user.bookings
     @wigs =[]
   end
+
 end

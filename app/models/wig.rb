@@ -4,8 +4,8 @@ class Wig < ApplicationRecord
   HAIRSTYLES = ["straight", "curly", "wavy", "afro"]
 
   belongs_to :user
-  has_many :reviews
-  has_many :bookings
+  has_many :reviews, dependent: :destroy
+  has_many :bookings, dependent: :destroy
   has_one_attached :wig_image
 
   geocoded_by :address
