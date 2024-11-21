@@ -8,11 +8,13 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @wig = Wig.find(params[:wig_id])
     @booking = Booking.new(booking_params)
 
     Rails.logger.debug("Booking Params: #{params.inspect}")
 
     @booking.user = current_user
+    @booking.wig = @wig
 
     @booking.save!
       redirect_to user_path(current_user), notice: 'Booking successfully created!'
