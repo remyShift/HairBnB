@@ -3,7 +3,13 @@
 
   <%= render 'shared/searchbar' %>
 
+  <%= render 'shared/wigs-map' %>
+
   <div data-search-wigs-target="wigsContainer">
-    <%= render 'shared/wigcard', wigs: @wigs %>
+    <% if @wigs.empty? %>
+      <p>No wigs posted yet</p>
+    <% else %>
+      <%= render 'shared/wigscard', wigs: @wigs %>
+    <% end %>
   </div>
 </div>
