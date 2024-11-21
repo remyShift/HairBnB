@@ -5,7 +5,8 @@ class Wig < ApplicationRecord
 
   has_many :reviews
   has_one_attached :wig_image
- 
+  belongs_to :user
+
   validates :name, :material, :color, :hair_style, :length, :address, :price, :wig_image, presence: true
   validates :length, inclusion: { in: LENGTHS,
     message: "%{value} is not a valid length" }

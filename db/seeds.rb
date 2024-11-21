@@ -56,7 +56,7 @@ cloudinary_images = [
         material: Wig::MATERIALS.sample,
         hair_style: Wig::HAIRSTYLES.sample,
         length: Wig::LENGTHS.sample,
-        address: ["Lyon", "Paris", "Marseille", "Grenoble"].sample,
+        address: Faker::Address.city,
         color: Faker::Color.color_name,
         price: rand(20..200),
         user_id: new_user.id
@@ -76,8 +76,8 @@ end
 
 Wig.find_each do |wig|
   rand(3..7).times do
-    Review.create!(
-      comment: Faker::Lorem.sentence,
+    Review.create(
+      comment: Faker::Lorem.paragraph,
       rating: rand(1..5),
       user_id: User.order('RANDOM()').first.id,
       wig_id: wig.id
