@@ -1,10 +1,13 @@
 <div class="container"
      data-controller="search-wigs">
+
   <%= render 'shared/searchbar' %>
-  <div class="flex gap-x-8">
+
+  <div class="flex flex-col lg:flex-row-reverse gap-8 lg:gap-4">
+    <%= render 'shared/wigs-map' %>
+
     <div data-search-wigs-target="wigsContainer">
       <%= render 'shared/wigscard', wigs: @wigs %>
     </div>
-    <%= render 'shared/wigs-map' %>
   </div>
 </div>
