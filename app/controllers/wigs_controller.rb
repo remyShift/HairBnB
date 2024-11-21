@@ -30,6 +30,7 @@ class WigsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     @wig = Wig.find(params[:id])
     @markers = [{
         lat: @wig.latitude,
