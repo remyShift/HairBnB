@@ -1,33 +1,33 @@
-<h2 class="text-4xl font-bold font-kaushan text-primary">Your profile</h2>
-
-<div class="flex gap-24 md:justify-between">
+<div class="flex flex-row justify-between gap-4 my-4 bg-white-800 border rounded-lg p-4 shadow-lg shadow-black-500/50 w-1/2 min-w-[300px]">
+  <div class="flex gap-24 md:justify-between">
     <div class="flex flex-col justify-center mt-4 gap-4">
+        <h2 class="text-4xl font-bold font-kaushan text-primary">Your profile</h2>
         <p class="text-lg"><span class="font-bold">Name:</span> <%= @user.first_name %> <%= @user.last_name %></p>
         <p class="text-lg"><span class="font-bold">Email:</span> <%= @user.email %></p>
         <p class="text-lg"><span class="font-bold">Joined:</span> <%= @user.created_at.strftime("%B %Y") %></p>
-        <%= link_to "Edit profile", edit_user_registration_path, class: "bg-primary text-white px-4 py-2 rounded-md w-fit hover:bg-primary/80" %>
     </div>
-
-    <%= cl_image_tag @user.profile_image.key, class: "w-44 h-44 rounded-full object-cover border-2 border-primary" %>
+    <div class="flex flex-col gap-4 items-center">
+      <%= cl_image_tag @user.profile_image.key, class: "items-end w-40 h-40 rounded-full object-cover border-2 border-primary" %>
+      <%= link_to "Edit profile", edit_user_registration_path, class: "items-end font-normal text-white bg-gray-400 px-4 py-2 rounded-md w-fit hover:bg-gray-400" %>
+    </div>
+  </div>
 </div>
 
-<div class="w-full h-[1px] bg-slate-200 my-4"></div>
-
-<div class="flex flex-col justify-center mt-4 gap-4">
-    <h3 class="text-2xl font-bold font-kaushan text-primary">Your wigs</h3>
+<div class="flex flex-col justify-center gap-4 bg-white-800 border rounded-lg p-4 shadow-lg shadow-black-500/50">
+  <h3 class="text-2xl font-bold font-kaushan text-primary">Your wigs</h3>
+  <div class="flex flex-row gap-4">
     <% if @wigs.empty? %>
         <p class="text-lg">You have no wigs yet.</p>
         <%= link_to "Add a wig", new_wig_path, class: "bg-primary text-white px-4 py-2 rounded-md w-fit hover:bg-primary/80" %>
     <% else %>
       <%= render 'shared/wigscard', wigs: @wigs %>
     <% end %>
+  </div>
 </div>
 
-<div class="w-full h-[1px] bg-slate-200 my-4"></div>
-
 <div class="flex flex-col justify-center mt-4 gap-4">
-    <h3 class="text-2xl font-bold font-kaushan text-primary">Your bookings</h3>
     <% if @bookings.empty? %>
+        <h3 class="text-2xl font-bold font-kaushan text-primary">Your bookings</h3>
         <p class="text-lg">You have no bookings yet.</p>
         <%= link_to "Browse wigs", wigs_path, class: "bg-primary text-white px-4 py-2 rounded-md w-fit hover:bg-primary/80" %>
     <% else %>

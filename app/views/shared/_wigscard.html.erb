@@ -7,7 +7,7 @@
 
       <div class="p-5">
         <div class="flex items-center justify-between">
-          <h5 class="text-2xl font-bold tracking-tight text-gray-900"><%= wig.name %></h5>
+          <h5 class="text-2xl font-bold tracking-tight text-gray-900"><%= wig.name.capitalize %></h5>
           <% if wig.reviews.present? %>
             <div class="flex items-center">
               <i class="fa-solid fa-star text-yellow-500"></i>
@@ -28,7 +28,7 @@
         <div class="flex items-center justify-between mt-8">
           <div class="flex flex-col">
             <p class="mb-3 font-normal text-gray-700">
-              <i class="fa-solid fa-location-dot"></i>
+              <i class="fa-solid fa-location-dot text-primary"></i>
               <%= wig.address.split(",")[-2].split(" ").last %>
             </p>
 

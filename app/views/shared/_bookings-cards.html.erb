@@ -1,17 +1,25 @@
-<div class="flex  justify-center ">
-  <div class="max-h-64 overflow-auto my-2 w-full">
+<div class="flex flex-col justify-between gap-4 bg-white-800 border rounded-lg p-4 shadow-lg shadow-black-500/50 w-1/2 min-w-[300px]">
+  <h3 class="text-2xl font-bold font-kaushan text-primary">Your bookings</h3>
+  <div class="my-2 w-full">
     <% @bookings.each do |booking| %>
-      <article class="max-h-48 overflow-auto">
-        <div class="flex items-start gap-4 p-3 mb-3 bg-white border-2 border-gray-200 rounded-lg shadow-md">
+        <div class="flex items-start items-center gap-4 p-3 mb-3 bg-white border-2 border-gray-200 rounded-lg shadow-md">
           <!-- Image de la wig -->
           <%= cl_image_tag booking.wig.wig_image.key, class: "object-contain rounded-full h-24 w-24 bg-transparent shadow-lg shadow-black-500/50" %>
-          <div class="font-medium">
-            <h4><%= booking.wig.name.capitalize %></h4>
-            <p>Starts on the <%= booking.start_time.strftime("%d/%m/%Y")  %></p> <!-- Affichage de la date de début -->
-            <p>Ends on the <%= booking.end_time.strftime("%d/%m/%Y")  %></p> <!-- Affichage de la date de fin -->
+          <div class="flex flex-row grow justify-between">
+            <div>
+              <p class="text-xl font-bold tracking-tight text-gray-900"><%= booking.wig.name.capitalize %></p>
+              <p class="mb-3 font-normal text-gray-700">
+              <i class="fa-solid fa-location-dot text-primary"></i>
+                <%= booking.wig.address.split(",")[-2].split(" ").last %>
+              </p>
+            </div>
+            <div>
+              <p><span class="text-lg font-bold font-kaushan">From: </span><span class="text-md"><%= booking.start_time.strftime("%d/%m/%Y") %></span></p> <!-- Affichage de la date de début -->
+              <p><span class="text-lg font-bold font-kaushan">To: </span><span class="text-md"><%= booking.end_time.strftime("%d/%m/%Y") %></span></p><!-- Affichage de la date de fin -->
+            </div>
+
           </div>
         </div>
-      </article>
     <% end %>
   </div>
 </div>
