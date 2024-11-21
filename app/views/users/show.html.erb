@@ -1,36 +1,44 @@
-<div class="flex flex-row justify-between gap-4 my-4 bg-white-800 border rounded-lg p-4 shadow-lg shadow-black-500/50 w-1/2 min-w-[300px]">
-  <div class="flex gap-24 md:justify-between">
-    <div class="flex flex-col justify-center mt-4 gap-4">
-        <h2 class="text-4xl font-bold font-kaushan text-primary">Your profile</h2>
-        <p class="text-lg"><span class="font-bold">Name:</span> <%= @user.first_name %> <%= @user.last_name %></p>
-        <p class="text-lg"><span class="font-bold">Email:</span> <%= @user.email %></p>
-        <p class="text-lg"><span class="font-bold">Joined:</span> <%= @user.created_at.strftime("%B %Y") %></p>
+<div class="flex justify-between gap-4 w-full mb-4">
+  <div class="w-1/2 flex gap-4 border rounded-lg p-4 shadow-lg shadow-black-500/50">
+    <div class="flex justify-between w-full">
+      <div class="flex flex-col gap-12">
+        <h2 class="text-3xl font-bold font-kaushan text-primary">Your profile</h2>
+        <div class="flex flex-col mt-4 gap-4">
+          <p class="text-lg"><span class="font-bold">Name:</span> <%= @user.first_name %> <%= @user.last_name %></p>
+          <p class="text-lg"><span class="font-bold">Email:</span> <%= @user.email %></p>
+          <p class="text-lg"><span class="font-bold">Joined:</span> <%= @user.created_at.strftime("%B %Y") %></p>
+        </div>
+      </div>
+      <div class="flex flex-col gap-4 items-center">
+        <%= cl_image_tag @user.profile_image.key, class: "items-end w-40 h-40 rounded-full object-cover border-2 border-primary" %>
+        <%= link_to "Edit profile", edit_user_registration_path, class: "items-end font-normal text-white bg-gray-400 px-4 py-2 rounded-md w-fit hover:bg-gray-400" %>
+      </div>
     </div>
-    <div class="flex flex-col gap-4 items-center">
-      <%= cl_image_tag @user.profile_image.key, class: "items-end w-40 h-40 rounded-full object-cover border-2 border-primary" %>
-      <%= link_to "Edit profile", edit_user_registration_path, class: "items-end font-normal text-white bg-gray-400 px-4 py-2 rounded-md w-fit hover:bg-gray-400" %>
-    </div>
+  </div>
+
+  <div class="w-1/2 flex flex-col justify-center gap-4 shadow-lg shadow-black-500/50">
+      <% if @bookings.empty? %>
+          <h3 class="text-2xl font-bold font-kaushan text-primary">Your bookings</h3>
+          <p class="text-lg">You have no bookings yet.</p>
+          <%= link_to "Browse wigs", wigs_path, class: "btn" %>
+      <% else %>
+          <%= render 'shared/bookings-cards' %>
+      <% end %>
   </div>
 </div>
 
-<div class="flex flex-col justify-center gap-4 bg-white-800 border rounded-lg p-4 shadow-lg shadow-black-500/50">
-  <h3 class="text-2xl font-bold font-kaushan text-primary">Your wigs</h3>
-  <div class="flex flex-row gap-4">
+<div class="flex flex-col justify-center gap-4 border rounded-lg p-4 shadow-lg shadow-black-500/50">
+  <h2 class="text-3xl font-bold font-kaushan text-primary">Your wigs</h2>
+  <div class="flex overflow-x-auto overflow-y-hidden w-full">
     <% if @wigs.empty? %>
         <p class="text-lg">You have no wigs yet.</p>
         <%= link_to "Add a wig", new_wig_path, class: "bg-primary text-white px-4 py-2 rounded-md w-fit hover:bg-primary/80" %>
     <% else %>
-      <%= render 'shared/wigscard', wigs: @wigs %>
+      <div class="flex gap-6">
+        <%= render 'shared/wigscard', wigs: @wigs %>
+      </div>
     <% end %>
   </div>
 </div>
 
-<div class="flex flex-col justify-center mt-4 gap-4">
-    <% if @bookings.empty? %>
-        <h3 class="text-2xl font-bold font-kaushan text-primary">Your bookings</h3>
-        <p class="text-lg">You have no bookings yet.</p>
-        <%= link_to "Browse wigs", wigs_path, class: "bg-primary text-white px-4 py-2 rounded-md w-fit hover:bg-primary/80" %>
-    <% else %>
-        <%= render 'shared/bookings-cards' %>
-    <% end %>
-</div>
+

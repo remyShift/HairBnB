@@ -1,17 +1,6 @@
 <div class="flex flex-col grow">
   <%= render 'shared/wigcard_show' %>
 
-  <h2 class="mt-6">
-    <% if current_user == @wig.user %>
-      <%= link_to "Update this Wig", edit_wig_path(@wig), class: "btn" %>
-      <%= link_to "Your page", user_path(@wig), class: "btn" %>
-      <%= link_to "Delete",
-        wig_path(@wig),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
-        class: "btn"
-      %>
-    <% end %>
-  </h2>
   <div class="mt-2">
     <%= render 'shared/reviews' %>
   </div>

@@ -7,7 +7,9 @@
     <%= render 'shared/wigs-map' %>
 
     <div data-search-wigs-target="wigsContainer">
-      <%= render 'shared/wigscard', wigs: @wigs %>
+      <div class="grid place-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-12">
+        <%= render 'shared/wigscard', wigs: @wigs %>
+      </div>
     </div>
   </div>
 </div>

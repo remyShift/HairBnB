@@ -19,6 +19,4 @@ class Wig < ApplicationRecord
     message: "%{value} is not a valid length" }
   validates :hair_style, inclusion: { in: HAIRSTYLES,
     message: "%{value} is not a valid length" }
-
-
 end
