@@ -1,0 +1,40 @@
+<div class="grid place-items-center grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  <% wigs.each do |wig| %>
+    <div class="max-w-sm bg-white border-2 border-gray-200 rounded-lg shadow-md hover:scale-105 transition-all duration-300 h-full">
+      <%= link_to wig_path(wig) do %>
+        <%= cl_image_tag wig.wig_image.key, class: "rounded-t-lg" %>
+      <% end %>
+
+      <div class="p-5">
+        <div class="flex items-center justify-between">
+          <h5 class="text-2xl font-bold tracking-tight text-gray-900"><%= wig.name %></h5>
+          <div class="flex items-center">
+            <i class="fa-solid fa-star text-yellow-500"></i>
+            <p class="ms-2 text-sm font-bold text-gray-900"><%= wig.reviews.average(:rating).round(1) %></p>
+
+            <span class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full"></span>
+            <p class="text-sm text-gray-900"><%= wig.reviews.count %> reviews</p>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between my-4">
+          <div class="flex flex-col">
+            <p class="mb-3 font-normal text-gray-700">
+              <span class="font-bold"><%= number_to_currency(wig.price) %></span>/day
+            </p>
+
+            <p class="mb-3 font-normal text-gray-700">
+              <i class="fa-solid fa-location-dot"></i>
+              <%= wig.address %>
+            </p>
+          </div>
+
+          <%= link_to wig_path(wig), class: "btn flex gap-2" do %>
+            Read more
+            <i class="fa-solid fa-arrow-right text-white"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
