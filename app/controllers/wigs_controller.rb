@@ -3,12 +3,12 @@ class WigsController < ApplicationController
   before_action :set_user, only: [:create]
   def index
     puts "-----------------------------------"
-    puts "params: #{params}"
+    puts "params: #{params[:location]}"
     puts "-----------------------------------"
 
-    if params[:search].present?
-      location = params[:search][:location].downcase if params[:search][:location].present?
-      product = params[:search][:product].downcase if params[:search][:product].present?
+    if params.present?
+      location = params[:location].downcase if params[:location].present?
+      product = params[:product].downcase if params[:product].present?
     end
 
     if location && product

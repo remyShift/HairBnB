@@ -1,20 +1,21 @@
-<div class="w-full flex justify-center items-center py-5">
-  <form action="/" method="get"
+<div class="w-full flex justify-center items-center py-5"
+    data-controller="search-wigs">
+  <form action="/wigs" method="get"
         class="flex justify-between items-center bg-white rounded-full shadow-md p-2 w-[80%] max-w-[800px]"
         data-search-wigs-target="form"
-        data-action="submit->search-wigs#search">
+        data-action="submit->search-wigs#reset">
     <input type="text"
-           name="product"
-           placeholder="wigs"
-           class="w-full rounded-l-full outline-none px-4 border-r-2 border-gray-300 border-y-0 border-l-0 hover:bg-gray-200 cursor-pointer"
-           data-search-wigs-target="wigName"
+          name="product"
+          placeholder="wigs"
+          class="w-full rounded-l-full outline-none px-4 border-r-2 border-gray-300 border-y-0 border-l-0 hover:bg-gray-200 cursor-pointer"
+          data-search-wigs-target="wigName"
           />
     <input type="text"
-           name="location"
-           placeholder="location"
-           class="w-full rounded-r-full outline-none px-4 border-none hover:bg-gray-200 cursor-pointer"
-           data-search-wigs-target="wigLocation"
-           />
+          name="location"
+          placeholder="location"
+          class="w-full rounded-r-full outline-none px-4 border-none hover:bg-gray-200 cursor-pointer"
+          data-search-wigs-target="wigLocation"
+          />
     <button type="submit"
             class="bg-primary w-1/2 text-white rounded-full font-kaushan px-6 py-2 hover:bg-primary/80">
             Search
