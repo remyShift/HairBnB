@@ -9,7 +9,13 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    redirect_to user_path
+
+    Rails.logger.debug("Booking Params: #{params.inspect}")
+
+    @booking.user = current_user
+
+    @booking.save!
+      redirect_to user_path(current_user), notice: 'Booking successfully created!'
   end
 
   def show
@@ -25,7 +31,9 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(
                                 :start_time,
-                                :end_time
+                                :end_time,
+                                :wig_id,
+                                :user_id
                               )
   end
 end

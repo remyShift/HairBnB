@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   # Wigs
   resources :wigs
 
+  resources :bookings, only: [:index, :new, :create, :show, :destroy]
+
+
   # Reviews
   get 'reviews/new'
   get 'reviews/create'
