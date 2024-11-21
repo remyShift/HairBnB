@@ -4,6 +4,10 @@
   <%= render 'shared/searchbar' %>
 
   <div data-search-wigs-target="wigsContainer">
-    <%= render 'shared/wigscard', wigs: @wigs %>
+    <% if @wigs.empty? %>
+      <p>No wigs posted yet</p>
+    <% else %>
+      <%= render 'shared/wigscard', wigs: @wigs %>
+    <% end %>
   </div>
 </div>
