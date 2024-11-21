@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  # Root
+  root to: "wigs#index"
+
+  # Bookings
   get 'bookings/index'
   get 'bookings/new'
   get 'bookings/create'
   get 'bookings/show'
   get 'bookings/destroy'
-  # Root
-  root to: "wigs#index"
 
   # Devise (users)
   devise_for :users, controllers: {
