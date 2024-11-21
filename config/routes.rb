@@ -18,9 +18,11 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   # Wigs
-  resources :wigs
+  resources :wigs do
+      resources :bookings, only: [:create]
+  end
 
-  resources :bookings, only: [:index, :new, :create, :show, :destroy]
+  resources :bookings, only: [:index, :new, :show, :destroy]
 
 
   # Reviews
