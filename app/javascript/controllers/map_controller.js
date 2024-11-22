@@ -26,7 +26,7 @@ export default class extends Controller {
     if (this.markersValue.length === 1) {
       this.#animateZoom(18)
     } else {
-      this.#animateZoom(4)
+      this.#animateZoom(3.7)
     }
   }
   
@@ -52,7 +52,7 @@ export default class extends Controller {
   #animateZoom(zoomValue) {
     this.map.flyTo({
       zoom: zoomValue,
-      duration: 2000,
+      duration: 3000,
       essential: true
     });
   }
