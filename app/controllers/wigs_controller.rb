@@ -3,16 +3,37 @@ class WigsController < ApplicationController
   before_action :set_user, only: [:create]
   def index
     if params.present?
-      location = params[:location].downcase if params[:location].present?
-      product = params[:product].downcase if params[:product].present?
+      location = params[:location] if params[:location].present?
+      product = params[:product] if params[:product].present?
     end
 
     if location && product
-      @wigs = Wig.where("lower(address) LIKE ?", "%#{location}%").where("lower(name) LIKE ?", "%#{product}%")
+      sql_subquery = <<~SQL
+      (name @@ :product
+      OR color @@ :product
+      OR length @@ :product
+      OR material @@ :product
+      OR hair_style @@ :product
+      OR users.first_name @@ :product
+      OR users.last_name @@ :product)
+      AND address @@ :location
+      SQL
+      # sql_subquery = "address @@ :address AND name @@ :product"
+      @wigs = Wig.joins(:user).where(sql_subquery, location: "%#{location}%", product: "%#{product}%" )
     elsif location
-      @wigs = Wig.where("lower(address) LIKE ?", "%#{location}%")
+      sql_subquery = "address @@ :location"
+      @wigs = Wig.where(sql_subquery, location: "%#{location}%")
     elsif product
-      @wigs = Wig.where("lower(name) LIKE ?", "%#{product}%")
+      sql_subquery = <<~SQL
+      name @@ :product
+      OR color @@ :product
+      OR length @@ :product
+      OR material @@ :product
+      OR hair_style @@ :product
+      OR users.first_name @@ :product
+      OR users.last_name @@ :product
+      SQL
+      @wigs = Wig.joins(:user).where(sql_subquery, product: "%#{product}%")
     else
       @wigs = Wig.all
     end
