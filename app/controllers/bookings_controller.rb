@@ -8,9 +8,12 @@ class BookingsController < ApplicationController
   end
 
   def create
+    start_time = booking_params[:start_time].first(10)
+    end_time = booking_params[:start_time].last(10)
     @wig = Wig.find(params[:wig_id])
-    @booking = Booking.new(booking_params)
-
+    @booking = Booking.new()
+    @booking.start_time = start_time
+    @booking.end_time = end_time
     @booking.user = current_user
     @booking.wig = @wig
 
