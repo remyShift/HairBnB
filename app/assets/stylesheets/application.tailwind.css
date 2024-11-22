@@ -2,21 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
+a:focus {
+  outline: none !important;
+}
 
 input:focus {
-    @apply outline-none;
+  outline: none !important;
+  @apply ring-primary ring-2 !important;
 }
 
 .btn {
-    @apply inline-flex items-center px-3 py-2 text-sm font-bold text-white bg-primary hover:bg-heavyprimary border-b-4 border-heavyprimary hover:border-heavyprimary rounded;
+  @apply inline-flex items-center px-3 py-2 text-sm font-bold text-white bg-primary hover:bg-heavyprimary border-b-4 border-heavyprimary hover:border-heavyprimary rounded;
+}
+
+.btn-photo {
+  @apply text-sm text-center font-bold bg-blue-500 text-white rounded-md px-4 py-2 cursor-pointer hover:bg-blue-600 border-b-4 border-b-blue-600 hover:border-blue-600 transition-colors duration-300;
 }
 
 h1 {
   @apply text-2xl md:text-3xl font-bold font-kaushan text-primary;
 }
 
-.mapboxgl-ctrl-geocoder {
-  @apply flex flex-col gap-2;
+.suggestions::after {
+  width: 100%;
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.mapboxgl-ctrl-geocoder--suggestion {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  height: 50px;
+  gap: 10px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.suggestions > li:last-of-type > a > .mapboxgl-ctrl-geocoder--suggestion {
+  border-bottom-left-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+
+.mapboxgl-ctrl-geocoder--suggestion:hover {
+  background-color: #c3c2c2;
+}
+
+.mapboxgl-ctrl-geocoder--powered-by {
+  display: none !important;
 }
 
 .mapboxgl-ctrl-geocoder--pin-right {
@@ -29,4 +65,18 @@ h1 {
 
 .mapboxgl-ctrl-geocoder svg {
   @apply hidden;
+}
+
+
+.mapboxgl-popup-content {
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 5px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mapboxgl-ctrl-geocoder--input:nth-child(2)::before {
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
 }

@@ -1,4 +1,4 @@
-<div class="bg-slate-100 w-44 h-auto border border-slate-600 absolute flex-col justify-center top-20 right-4 rounded-md transition-opacity duration-300 opacity-0 px-4 hidden ease-in-out"
+<div class="bg-slate-100 w-44 h-auto border border-slate-600 absolute z-50 flex-col justify-center top-20 right-4 rounded-md transition-opacity duration-300 opacity-0 px-4 hidden ease-in-out"
     data-toggle-login-target="loginSignup">
     <% if user_signed_in? %>
         <%= link_to "Mon profil", user_path(current_user), class: "text-sm py-2 cursor-pointer text-center hover:text-primary transition-colors duration-300" %>

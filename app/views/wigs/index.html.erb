@@ -1,15 +1,38 @@
+<!-- Hero Banner -->
+<div class="rounded-full shadow-lg relative mb-4 w-full h-48 bg-gradient-to-r from-[#dd3737] to-[#e00001] flex items-center justify-between">
+  <!-- Centered Search Bar -->
+  <div class="relative flex items-center justify-center h-full flex-1">
+    <%= render 'shared/searchbar' %>
+  </div>
+
+  <!-- Lottie Animation -->
+  <div class="rounded-full flex-shrink-0 h-full flex items-center justify-end">
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+    <dotlottie-player src="https://lottie.host/20dccf51-318f-4f66-8e8d-107cd640c14c/Fajs3umLr1.lottie" speed="1" loop autoplay></dotlottie-player>
+  </div>
+
+</div>
+
+
+
 <div class="container"
-     data-controller="search-wigs">
+      data-controller="search-wigs">
 
-  <%= render 'shared/searchbar' %>
-
-  <div class="flex flex-col lg:flex-row-reverse gap-8 lg:gap-4">
-    <%= render 'shared/wigs-map' %>
-
-    <div data-search-wigs-target="wigsContainer">
-      <div class="grid place-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-12">
-        <%= render 'shared/wigscard', wigs: @wigs %>
+  <div class="flex flex-col lg:flex-row-reverse gap-8 lg:gap-4 w-full">
+    <% if @wigs.empty? %>
+      <div class="w-full flex justify-center items-center py-5">
+        <p class="text-3xl font-bold font-kaushan text-primary">There are nos results for your search !</p>
       </div>
-    </div>
+    <% else %>
+
+      <%= render 'shared/wigs-map' %>
+
+      <div data-search-wigs-target="wigsContainer">
+        <div class="grid place-items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-12">
+          <%= render 'shared/wigscard', wigs: @wigs %>
+        </div>
+      </div>
+    <% end %>
+
   </div>
 </div>

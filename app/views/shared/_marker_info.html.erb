@@ -1,0 +1,14 @@
+<div class="flex flex-col items-start justify-center gap-2 p-4">
+    <h2 class="text-xl font-bold">
+        <%= wig.name %>
+    </h2>
+
+    <p class="text-sm text-slate-600">
+        <%= wig.address %>
+    </p>
+
+    <a href="<%= wig_path(wig) %>" class="absolute bottom-1 right-2 text-sm font-bold text-primary hover:text-heavyprimary hover:underline">
+        View
+    </a>
+</div>
+
