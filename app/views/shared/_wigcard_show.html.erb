@@ -1,15 +1,13 @@
+<h1 class="text-3xl mb-4">Wig Details</h1>
 
-<h1 class="mb-4">Wig Details</h1>
-
-
-<div class="flex justify-center gap-4 w-full">
-  <div class="flex flex-col justify-between gap-4 bg-white-800 border rounded-lg p-4 shadow-lg shadow-black-500/50 w-1/2 min-w-[300px]">
+<div class="flex flex-col md:flex-row md:items-start md:justify-center items-center w-full h-full gap-4">
+  <div class="flex w-full h-full flex-col justify-between gap-4 bg-white border rounded-lg p-4 shadow-lg shadow-black-500/50 md:w-1/2 md:min-w-[300px]">
     <h2 class="text-2xl font-bold text-gray-800 mt-4"><%= @wig.name %></h2>
     <div class="flex justify-center items-center bg-white-800">
-      <%= cl_image_tag @wig.wig_image.key, class: "object-contain rounded-lg h-96 w-96 bg-transparent shadow-lg shadow-black-500/50" %>
+      <%= cl_image_tag @wig.wig_image.key, class: "object-contain rounded-lg h-1/2 w-1/2 bg-transparent shadow-lg shadow-black-500/50" %>
     </div>
 
-    <p class="text-md">Wig avaible at <span class="font-bold"><%= @wig.address.split(",")[-2].split(" ").last %></span>, made in <span class="font-bold"><%= @wig.material %></span>, <span class="font-bold"><%= @wig.hair_style %></span> hair style. Perfect for you !</p>
+    <p class="text-md">Wig avaible at <span class="font-bold"><%= @wig.address.split(",")[-2].split(" ").last %></span>, made in <span class="font-bold"><%= @wig.material %></span>, <span class="font-bold"><%= @wig.hair_style %></span> hair style. <br> With a <span class="font-bold"><%= @wig.length %></span> length and a beautiful color <span class="font-bold"><%= @wig.color %></span>, Perfect for you !</p>
 
     <div class="flex flex-wrap items-center gap-2 mt-12">
       <%= cl_image_tag @wig.user.profile_image.key, class: "rounded-full h-12 w-12 border-2 border-primary" %>
@@ -27,8 +25,8 @@
     <% end %>
   </div>
 
-  <div class="flex flex-col gap-4 w-1/2 md:w-1/3 h-1/3">
-    <div class="bg-grey-500 rounded-lg px-2 pt-4 border shadow-lg p-4 shadow-black-500/50">
+  <div class="flex flex-col justify-center gap-4 w-full md:w-1/3 h-full">
+    <div class="bg-white rounded-lg px-2 pt-4 border shadow-lg p-4 shadow-black-500/50">
       <%= form_with model: @booking, class: "flex flex-col items-center justify-between w-full gap-4", url: wig_bookings_path(@wig) do |f| %>
         <div class="flex flex-col items-center justify-between w-full">
           <p class="mb-4 text-lg font-bold font-kaushan">Your dates:</p>
@@ -44,6 +42,16 @@
             </div>
           </template>
         </div>
+
+          <p class="text-lg font-bold font-kaushan">From :</p>
+          <%= f.datetime_local_field :start_time, placeholder: "Today !", class: "w-[60%] rounded-lg", data: { controller: "datepicker", datepicker_target: "opening_date" } %>
+        </div>
+
+        <div class="flex flex-col items-center justify-between w-full">
+          <p class="text-lg font-bold font-kaushan">To :</p>
+          <%= f.datetime_local_field :end_time, placeholder: "When you want", class: "w-[60%] rounded-lg", data: { controller: "datepicker", datepicker_target: "closing_date" } %>
+        </div>
+
         <% if current_user && @wig.user != current_user %>
           <button class="btn" type="submit">Book it now !</button>
         <% elsif @wig.user == current_user %>
@@ -53,7 +61,6 @@
         <% end %>
       <% end %>
     </div>
-
     <%= render 'shared/unique-wig-map' %>
   </div>
 </div>

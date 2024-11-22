@@ -18,8 +18,6 @@ export default class extends Controller {
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    // console.log("markersvalue:", this.markersValue)
-
   }
 
   #addMarkersToMap() {
@@ -29,6 +27,8 @@ export default class extends Controller {
       el.className = 'marker text-3xl'
       new mapboxgl.Marker(el)
         .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(new mapboxgl.Popup({ offset: 25 })
+          .setHTML(marker.info_window_html))
         .addTo(this.map)
     })
   }
