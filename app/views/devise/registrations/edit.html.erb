@@ -1,5 +1,5 @@
-
-<div class="my-4 flex flex-col items-center gap-2">
+<div class="flex flex-col items-center">
+<div class="my-4 flex flex-col items-start gap-2">
   <h2 class="text-3xl font-bold font-kaushan text-primary">Edit your profile</h2>
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.error_notification %>
@@ -45,16 +45,17 @@
     </div>
 
 
-    <div class="form-actions">
       <%= f.button :submit, "Update" %>
-  <% end %>
-
+        <% end %>
+         <div class= "flex items-center">
+      <%= link_to :back, class: "btn " do%>
+         <i class="fa-solid fa-arrow-left mr-1"></i> Back
+      <%end %>
 <%= button_to "Delete my account",
               registration_path(resource_name),
-              class: "btn",
+              class: "btn mx-2",
               data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" },
               method: :delete %>
-
-<%= link_to "Back", :back, class: "btn" %>
+    </div>
     </div>
 </div>
