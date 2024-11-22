@@ -42,7 +42,7 @@
             </div>
           </template>
         </div>
-        <p class="font-medium text-gray-700"><span class="font-bold"><%= "#${@wig.price}"%></span> / day</p>
+        <p class="font-medium text-gray-700"><span class="font-bold"><%= "$#{@wig.price}"%></span> / day</p>
         <% if current_user && @wig.user != current_user %>
           <button class="btn" type="submit">Book it now !</button>
         <% elsif @wig.user == current_user %>
