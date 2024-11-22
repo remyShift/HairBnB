@@ -1,9 +1,9 @@
-<div class="flex justify-center">
-  <div class="max-h-64 overflow-auto my-2 w-full">
+<div class="flex justify-center p-2">
+  <div class=" max-h-80 overflow-auto mb-2 w-full p-8">
     <% @wig.reviews.each do |review| %>
-      <article class="max-h-48 overflow-auto">
+      <article class="p-4 bg-white mb-4 rounded-xl shadow">
         <div class="flex items-center mb-4">
-          <%= cl_image_tag review.user.profile_image.key, class: "w-10 h-10 me-4 rounded-full" %>
+          <%= cl_image_tag review.user.profile_image.key, class: "items-center w-10 h-10 me-4 rounded-full" %>
           <div class="font-medium">
             <p><%= review.user.first_name %></p>
           </div>
