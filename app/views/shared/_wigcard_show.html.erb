@@ -26,15 +26,15 @@
   </div>
 
   <div class="flex flex-col justify-center gap-4 w-full md:w-1/3 h-full">
-    <div class="bg-white rounded-lg px-2 pt-4 border shadow-lg p-4 shadow-black-500/50">
+    <div class="bg-white w-full rounded-lg px-2 pt-4 border shadow-lg p-4 shadow-black-500/50">
       <%= form_with model: @booking, class: "flex flex-col items-center justify-between w-full gap-4", url: wig_bookings_path(@wig) do |f| %>
         <div class="flex flex-col items-center justify-between w-full">
           <p class="mb-4 text-lg font-bold font-kaushan">Your dates:</p>
           <%= f.datetime_local_field :start_time,
-                                     placeholder: "Today !",
-                                     class: "w-[90%] rounded-lg",
-                                     data: { controller: "datepicker",
-                                             datepicker_price_value: @wig.price } %>
+                                      placeholder: "Today !",
+                                      class: "w-[60%] rounded-lg",
+                                      data: { controller: "datepicker",
+                                              datepicker_price_value: @wig.price } %>
           <template id="booking-template">
             <div class="flex flex-col items-center mt-4">
               <p><span id="days" class="font-bold"></span> day(s)</p>
