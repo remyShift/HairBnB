@@ -52,7 +52,8 @@ class WigsController < ApplicationController
     @wig = Wig.find(params[:id])
     @markers = [{
         lat: @wig.latitude,
-        lng: @wig.longitude
+        lng: @wig.longitude,
+        info_window_html: render_to_string(partial: "shared/marker_info", locals: { wig: @wig })
       }]
   end
 

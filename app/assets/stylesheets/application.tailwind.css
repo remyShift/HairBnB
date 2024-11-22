@@ -2,8 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+a:focus {
+  outline: none !important;
+}
+
 input:focus {
-  @apply outline-none;
+  outline: none !important;
+  @apply ring-primary ring-2 !important;
 }
 
 .btn {
@@ -32,4 +37,11 @@ h1 {
 
 .mapboxgl-ctrl-geocoder svg {
   @apply hidden;
+}
+
+
+.mapboxgl-popup-content {
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 5px 5px 3px rgba(0, 0, 0, 0.1);
 }
