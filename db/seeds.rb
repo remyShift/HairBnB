@@ -34,9 +34,9 @@ cloudinary_images = [
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732110756/prrhqp0necza5zlnfcec.jpg",
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732109193/pzz0mryvwyuehof8awbx.jpg",
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732287406/wn7wqah6bchropydvvd3.png",
-  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732287381/rqcgxuuoy6rpkmreouas.png",
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732287368/uw2somdeqcyrcysypelm.png",
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732287355/ogrm9cngh3dqndxzf2os.png",
+  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732287940/cyfljhirmno5zwsxk6uh.png"
 ]
 
 10.times do
@@ -51,7 +51,7 @@ cloudinary_images = [
   new_user.profile_image.attach(io: URI.open(image_url), filename: "profile_image.jpg")
 
   if new_user.save
-    rand(6..15).times do
+    rand(3..5).times do
     color = Faker::Color.color_name
     length = Wig::LENGTHS.sample
     hair_style = Wig::HAIRSTYLES.sample
