@@ -1,30 +1,15 @@
 <% wigs.order(created_at: :desc).each do |wig| %>
-  <div class="w-[90%] min-w-[300px] flex flex-col items-between justify-between bg-white border-2 border-gray-200 rounded-lg shadow-md hover:scale-105 transition-all duration-300 h-full">
+  <div class="w-[90%] min-w-[300px] flex flex-col gap-4 bg-white border-2 border-gray-200 rounded-lg shadow-md hover:scale-105 transition-all duration-300 h-full">
     <%= link_to wig_path(wig) do %>
       <%= cl_image_tag wig.wig_image.key, class: "rounded-t-lg" %>
     <% end %>
 
-    <div class="p-5">
-      <div class="flex items-center justify-between">
+    <div class="p-5 h-full">
+      <div class="flex justify-between items-end h-fit">
         <h5 class="text-2xl font-bold tracking-tight text-gray-900"><%= wig.name.capitalize %></h5>
-        <% if wig.reviews.present? %>
-          <div class="flex items-center">
-            <i class="fa-solid fa-star text-yellow-500"></i>
-            <p class="text-sm font-bold text-gray-900"><%= wig.reviews.average(:rating).round(1) %></p>
-
-            <span class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full"></span>
-
-            <div class="flex items-center gap-1">
-              <p class="text-sm text-gray-900"><%= wig.reviews.count %></p>
-              <p class="text-sm text-gray-900"> reviews</p>
-            </div>
-          </div>
-        <% else %>
-          <p class="text-sm text-gray-900">No reviews yet</p>
-        <% end %>
       </div>
 
-      <div class="flex items-center justify-between mt-8">
+      <div class="flex items-center justify-between mt-8 mb-0">
         <div class="flex flex-col">
           <p class="mb-3 font-normal text-gray-700">
             <i class="fa-solid fa-location-dot text-primary"></i>
@@ -34,12 +19,29 @@
           <p class="mb-3 font-normal text-gray-700">
             <span class="font-bold"><%= number_to_currency(wig.price) %></span>/day
           </p>
-        </div>
+          <% if wig.reviews.present? %>
+            <div class="flex items-center">
+              <i class="fa-solid fa-star text-yellow-500"></i>
+              <p class="text-sm font-bold text-gray-900"><%= wig.reviews.average(:rating).round(1) %></p>
 
-        <%= link_to wig_path(wig), class: "btn flex gap-2" do %>
-          Read more
-          <i class="fa-solid fa-arrow-right text-white"></i>
-        <% end %>
+              <span class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full"></span>
+
+              <div class="flex items-center gap-1">
+                <p class="text-sm text-gray-900"><%= wig.reviews.count %></p>
+                <p class="text-sm text-gray-900"> reviews</p>
+              </div>
+            </div>
+          <% else %>
+            <p class="text-sm text-gray-900">No reviews yet</p>
+          <% end %>
+
+        </div>
+        <div class="flex justify-end">
+          <%= link_to wig_path(wig), class: "btn flex gap-2 items-end" do %>
+            Read more
+            <i class="fa-solid fa-arrow-right text-white"></i>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
