@@ -1,4 +1,4 @@
-<%= simple_form_for(wig) do |f| %>
+<%= simple_form_for(wig, html: {multipart: true}) do |f| %>
 <div class="my-4 flex flex-col items-center gap-2">
     <%= f.input :name,
                 required: true,
@@ -40,12 +40,10 @@
                 required: true,
                 input_html: { class: "w-[80vw] md:w-[50vw] border border-slate-600 rounded-md p-2 flex flex-col gap-2 focus:border-primary focus:outline-none",
                               placeholder: "150" } %>
-    <div class="flex flex-col items-start justify-center w-[80vw] md:w-[50vw] mb-2">
-      <%= f.input :wig_image, as: :file, input_html: { class: "hidden", id: "file-upload" } %>
-      <label for="file-upload" class="btn-photo w-1/2">
-        Add photo 💾
-      </label>
-    </div>
+    <%= f.input :wig_image,
+                as: :file,
+                required: true,
+                input_html: { class: "flex flex-col items-start justify-center w-[80vw] md:w-[50vw] mb-2", id: "file-upload" } %>
     <%= f.button :submit, "Create",
                  class: "btn w-[80vw] md:w-[50vw]" %>
   </div>
