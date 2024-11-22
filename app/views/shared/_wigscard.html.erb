@@ -1,10 +1,10 @@
 <% wigs.order(created_at: :desc).each do |wig| %>
-  <div class="w-[90%] min-w-[300px] flex flex-col gap-4 bg-white border-2 border-gray-200 rounded-lg shadow-md hover:scale-105 transition-all duration-300 h-full">
+  <div class="w-full max-w-[600px] flex flex-col gap-4 gap-x-8 bg-white border-2 border-gray-200 rounded-lg shadow-md hover:scale-105 transition-all duration-300 h-full">
     <%= link_to wig_path(wig) do %>
       <%= cl_image_tag wig.wig_image.key, class: "rounded-t-lg" %>
     <% end %>
 
-    <div class="p-5 h-full">
+    <div class="p-5 h-full flex flex-col justify-between">
       <div class="flex justify-between items-end h-fit">
         <h5 class="text-2xl font-bold tracking-tight text-gray-900"><%= wig.name.capitalize %></h5>
       </div>
