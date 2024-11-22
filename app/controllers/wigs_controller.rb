@@ -2,8 +2,6 @@ class WigsController < ApplicationController
   before_action :set_wig, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:create]
   def index
-
-
     if params.present?
       location = params[:location] if params[:location].present?
       product = params[:product] if params[:product].present?

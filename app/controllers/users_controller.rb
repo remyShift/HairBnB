@@ -13,5 +13,4 @@ class UsersController < ApplicationController
     @bookings = []
     @wigs =[]
   end
-
 end
