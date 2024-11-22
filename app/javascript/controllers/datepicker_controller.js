@@ -19,6 +19,10 @@ export default class extends Controller {
 
   handleDateChange(selectedDates) {
     const bookingElement = this.element.parentNode
+    if (bookingElement.querySelector(".aClone")) {
+      const cloneToDestroy = bookingElement.querySelector(".aClone");
+      cloneToDestroy.remove();
+    }
     const startDate = selectedDates[0];
     const endDate = selectedDates[1];
     if (endDate) {
@@ -27,6 +31,7 @@ export default class extends Controller {
       const clone = template.content.cloneNode(true);
       clone.querySelector("#days").innerText = dateRange;
       clone.querySelector("#price").innerText = dateRange * this.priceValue;
+      clone.querySelector("div").classList.add("aClone");
       bookingElement.appendChild(clone);
     }
   }
