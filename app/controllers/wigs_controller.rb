@@ -7,16 +7,19 @@ class WigsController < ApplicationController
     puts "-----------------------------------"
 
     if params.present?
-      location = params[:location].downcase if params[:location].present?
-      product = params[:product].downcase if params[:product].present?
+      location = params[:location] if params[:location].present?
+      product = params[:product] if params[:product].present?
     end
 
     if location && product
-      @wigs = Wig.where("lower(address) LIKE ?", "%#{location}%").where("lower(name) LIKE ?", "%#{product}%")
+      sql_subquery = "address ILIKE :address AND name ILIKE :name"
+      @wigs = Wig.where(sql_subquery, address: "%#{location}%", name: "%#{product}%" )
     elsif location
-      @wigs = Wig.where("lower(address) LIKE ?", "%#{location}%")
+      sql_subquery = "address ILIKE :address"
+      @wigs = Wig.where(sql_subquery, address: "%#{location}%")
     elsif product
-      @wigs = Wig.where("lower(name) LIKE ?", "%#{product}%")
+      sql_subquery = "name ILIKE :name"
+      @wigs = Wig.where(sql_subquery, name: "%#{product}%")
     else
       @wigs = Wig.all
     end
