@@ -2,9 +2,7 @@ class WigsController < ApplicationController
   before_action :set_wig, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:create]
   def index
-    puts "-----------------------------------"
-    puts "params: #{params[:location]}"
-    puts "-----------------------------------"
+
 
     if params.present?
       location = params[:location] if params[:location].present?
@@ -12,14 +10,32 @@ class WigsController < ApplicationController
     end
 
     if location && product
-      sql_subquery = "address ILIKE :address AND name ILIKE :name"
-      @wigs = Wig.where(sql_subquery, address: "%#{location}%", name: "%#{product}%" )
+      sql_subquery = <<~SQL
+      (name ILIKE :product
+      OR color ILIKE :product
+      OR length ILIKE :product
+      OR material ILIKE :product
+      OR hair_style ILIKE :product
+      OR users.first_name ILIKE :product
+      OR users.last_name ILIKE :product)
+      AND address ILIKE :location
+      SQL
+      # sql_subquery = "address ILIKE :address AND name ILIKE :product"
+      @wigs = Wig.joins(:user).where(sql_subquery, location: "%#{location}%", product: "%#{product}%" )
     elsif location
-      sql_subquery = "address ILIKE :address"
-      @wigs = Wig.where(sql_subquery, address: "%#{location}%")
+      sql_subquery = "address ILIKE :location"
+      @wigs = Wig.where(sql_subquery, location: "%#{location}%")
     elsif product
-      sql_subquery = "name ILIKE :name"
-      @wigs = Wig.where(sql_subquery, name: "%#{product}%")
+      sql_subquery = <<~SQL
+      name ILIKE :product
+      OR color ILIKE :product
+      OR length ILIKE :product
+      OR material ILIKE :product
+      OR hair_style ILIKE :product
+      OR users.first_name ILIKE :product
+      OR users.last_name ILIKE :product
+      SQL
+      @wigs = Wig.joins(:user).where(sql_subquery, product: "%#{product}%")
     else
       @wigs = Wig.all
     end
