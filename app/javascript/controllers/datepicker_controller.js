@@ -21,11 +21,13 @@ export default class extends Controller {
     const bookingElement = this.element.parentNode
     const startDate = selectedDates[0];
     const endDate = selectedDates[1];
-    const dateRange = (endDate - startDate) / (1000 * 60 * 60 * 24) + 1;
-    const template = bookingElement.querySelector("#booking-template");
-    const clone = template.content.cloneNode(true);
-    clone.querySelector("#days").innerText = dateRange;
-    clone.querySelector("#price").innerText = dateRange * this.priceValue;
-    bookingElement.appendChild(clone);
+    if (endDate) {
+      const dateRange = (endDate - startDate) / (1000 * 60 * 60 * 24) + 1;
+      const template = bookingElement.querySelector("#booking-template");
+      const clone = template.content.cloneNode(true);
+      clone.querySelector("#days").innerText = dateRange;
+      clone.querySelector("#price").innerText = dateRange * this.priceValue;
+      bookingElement.appendChild(clone);
+    }
   }
 }
