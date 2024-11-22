@@ -11,29 +11,29 @@ class WigsController < ApplicationController
 
     if location && product
       sql_subquery = <<~SQL
-      (name ILIKE :product
-      OR color ILIKE :product
-      OR length ILIKE :product
-      OR material ILIKE :product
-      OR hair_style ILIKE :product
-      OR users.first_name ILIKE :product
-      OR users.last_name ILIKE :product)
-      AND address ILIKE :location
+      (name @@ :product
+      OR color @@ :product
+      OR length @@ :product
+      OR material @@ :product
+      OR hair_style @@ :product
+      OR users.first_name @@ :product
+      OR users.last_name @@ :product)
+      AND address @@ :location
       SQL
-      # sql_subquery = "address ILIKE :address AND name ILIKE :product"
+      # sql_subquery = "address @@ :address AND name @@ :product"
       @wigs = Wig.joins(:user).where(sql_subquery, location: "%#{location}%", product: "%#{product}%" )
     elsif location
-      sql_subquery = "address ILIKE :location"
+      sql_subquery = "address @@ :location"
       @wigs = Wig.where(sql_subquery, location: "%#{location}%")
     elsif product
       sql_subquery = <<~SQL
-      name ILIKE :product
-      OR color ILIKE :product
-      OR length ILIKE :product
-      OR material ILIKE :product
-      OR hair_style ILIKE :product
-      OR users.first_name ILIKE :product
-      OR users.last_name ILIKE :product
+      name @@ :product
+      OR color @@ :product
+      OR length @@ :product
+      OR material @@ :product
+      OR hair_style @@ :product
+      OR users.first_name @@ :product
+      OR users.last_name @@ :product
       SQL
       @wigs = Wig.joins(:user).where(sql_subquery, product: "%#{product}%")
     else
