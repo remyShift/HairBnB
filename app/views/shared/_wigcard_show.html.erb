@@ -38,11 +38,11 @@
           <template id="booking-template">
             <div id="booking-div" class="flex flex-col items-center mt-4">
               <p><span id="days" class="font-bold"></span> day(s)</p>
-              <p>Total : <span id="price" class="font-bold"></span> €</p>
+              <p>Total : $<span id="price" class="font-bold"></span></p>
             </div>
           </template>
         </div>
-        <p class="font-medium text-gray-400"><span class="font-bold"><%= "#{@wig.price} €"%></span> / day</p>
+        <p class="font-medium text-gray-700"><span class="font-bold"><%= "#${@wig.price}"%></span> / day</p>
         <% if current_user && @wig.user != current_user %>
           <button class="btn" type="submit">Book it now !</button>
         <% elsif @wig.user == current_user %>
