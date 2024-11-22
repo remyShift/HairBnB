@@ -24,9 +24,6 @@ user_image = [
 
 cloudinary_images = [
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732110869/paxd7lrtjwfntf3myp7f.jpg",
-  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732110863/a0jmcil2dvho2uclogp7.jpg",
-  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732110855/cpza2zqbszk5nlz3jgf1.jpg",
-  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732110843/jx56acb0scpuuaomiqwz.jpg",
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732110830/vvs7dkqttcnhwqw2a03z.jpg",
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732110819/lts4wrsbgrgxyuksigcp.jpg",
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732110810/k3pi1arlpspbckvfzqyk.jpg",
