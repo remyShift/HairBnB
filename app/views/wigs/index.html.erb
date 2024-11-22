@@ -1,13 +1,12 @@
 <!-- Hero Banner -->
-<div class="shadow-lg relative mb-4 w-full h-48 bg-[#e00001] flex items-center justify-between">
-
+<div class="rounded-full shadow-lg relative mb-4 w-full h-48 bg-gradient-to-r from-[#dd3737] to-[#e00001] flex items-center justify-between">
   <!-- Centered Search Bar -->
   <div class="relative flex items-center justify-center h-full flex-1">
     <%= render 'shared/searchbar' %>
   </div>
 
   <!-- Lottie Animation -->
-  <div class="flex-shrink-0 h-full flex items-center justify-end">
+  <div class="rounded-full flex-shrink-0 h-full flex items-center justify-end">
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
     <dotlottie-player src="https://lottie.host/20dccf51-318f-4f66-8e8d-107cd640c14c/Fajs3umLr1.lottie" speed="1" loop autoplay></dotlottie-player>
   </div>
