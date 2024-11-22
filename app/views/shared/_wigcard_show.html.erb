@@ -43,15 +43,6 @@
           </template>
         </div>
 
-          <p class="text-lg font-bold font-kaushan">From :</p>
-          <%= f.datetime_local_field :start_time, placeholder: "Today !", class: "w-[60%] rounded-lg", data: { controller: "datepicker", datepicker_target: "opening_date" } %>
-        </div>
-
-        <div class="flex flex-col items-center justify-between w-full">
-          <p class="text-lg font-bold font-kaushan">To :</p>
-          <%= f.datetime_local_field :end_time, placeholder: "When you want", class: "w-[60%] rounded-lg", data: { controller: "datepicker", datepicker_target: "closing_date" } %>
-        </div>
-
         <% if current_user && @wig.user != current_user %>
           <button class="btn" type="submit">Book it now !</button>
         <% elsif @wig.user == current_user %>
