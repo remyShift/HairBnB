@@ -54,7 +54,7 @@ cloudinary_images = [
     color = Faker::Color.color_name
     length = Wig::LENGTHS.sample
     hair_style = Wig::HAIRSTYLES.sample
-    name = "#{Faker::Adjective.positive} #{length} wig"
+    name = "#{["Great", "Beautiful", "Amazing", "Sweet", "Elegant", "Shiny"].sample} #{length} wig"
 
     city = rand < 0.3 ? "Lyon" : Faker::Address.city  # 80% de chance que ce soit Lyon
     full_address = "#{Faker::Address.street_address}, #{city}, France"
