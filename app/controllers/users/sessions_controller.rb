@@ -27,7 +27,7 @@ class Users::SessionsController < Devise::SessionsController
       end
     else
       self.resource = User.new(sign_in_params)
-      flash.now[:alert] = "Invalid email or password."
+      resource.errors.add(:base, "Invalid email or password.")
       @show_modal_login = true
       respond_to do |format|
         format.html { render "shared/form-login", status: :unprocessable_entity }

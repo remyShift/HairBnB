@@ -2,10 +2,6 @@ class WigsController < ApplicationController
   before_action :set_wig, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:create]
   def index
-    puts "-----------------------------------"
-    puts "params: #{params[:location]}"
-    puts "-----------------------------------"
-
     if params.present?
       location = params[:location].downcase if params[:location].present?
       product = params[:product].downcase if params[:product].present?
