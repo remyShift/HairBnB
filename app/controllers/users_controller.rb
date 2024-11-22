@@ -13,5 +13,8 @@ class UsersController < ApplicationController
     @bookings = []
     @wigs =[]
   end
-
+  def destroy
+    resource.destroy
+    redirect_to root_path, notice: "Your account has been successfully deleted."
+  end
 end
