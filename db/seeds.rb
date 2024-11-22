@@ -55,15 +55,19 @@ cloudinary_images = [
     length = Wig::LENGTHS.sample
     hair_style = Wig::HAIRSTYLES.sample
     name = "#{Faker::Adjective.positive} #{length} wig"
-      new_wig = Wig.new(
-        name: name,
-        material: Wig::MATERIALS.sample,
-        hair_style: hair_style,
-        length: length,
-        address: "#{Faker::Address.full_address}, France",
-        color: color,
-        price: rand(20..200),
-        user_id: new_user.id
+
+    city = rand < 0.3 ? "Lyon" : Faker::Address.city  # 80% de chance que ce soit Lyon
+    full_address = "#{Faker::Address.street_address}, #{city}, France"
+
+    new_wig = Wig.new(
+      name: name,
+      material: Wig::MATERIALS.sample,
+      hair_style: hair_style,
+      length: length,
+      address: full_address,
+      color: color,
+      price: rand(20..200),
+      user_id: new_user.id
       )
 
       image_url = cloudinary_images.sample
@@ -81,7 +85,7 @@ end
 Wig.find_each do |wig|
   rand(3..6).times do
     Review.create(
-      comment: Faker::Lorem.paragraph,
+      comment: Faker::Quote.yoda,
       rating: rand(3..5),
       user_id: User.order('RANDOM()').first.id,
       wig_id: wig.id

@@ -1,7 +1,14 @@
+<!-- Hero Banner -->
+<div class="rounded-full relative mb-4 w-full h-24 bg-gradient-to-r from-primary to-heavyprimary">
+<!-- Centered Search Bar -->
+  <div class="relative flex items-center justify-center h-full">
+    <%= render 'shared/searchbar' %>
+  </div>
+</div>
+
+
 <div class="container"
      data-controller="search-wigs">
-
-  <%= render 'shared/searchbar' %>
 
   <div class="flex flex-col lg:flex-row-reverse gap-8 lg:gap-4">
     <%= render 'shared/wigs-map' %>
