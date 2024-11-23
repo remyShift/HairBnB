@@ -35,7 +35,7 @@
 <!-- 3 -->
 <div class="flex flex-col justify-center gap-4 border rounded-lg p-4 shadow-lg shadow-black-500/50 bg-white" >
   <h2 class="text-3xl font-bold font-kaushan text-primary">Your wigs</h2>
-  <div class="flex overflow-x-auto overflow-y-hidden w-full">
+  <div class="flex overflow-y-auto md:overflow-x-auto w-full">
     <% if @wigs.empty? %>
       <div class="flex flex-col gap-4">
         <p class="text-lg">You have no wigs yet.</p>

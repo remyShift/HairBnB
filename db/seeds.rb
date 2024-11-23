@@ -31,10 +31,12 @@ cloudinary_images = [
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732110768/ywcy1xhqvg3v88vdmq3e.jpg",
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732110756/prrhqp0necza5zlnfcec.jpg",
   "https://res.cloudinary.com/dmqwigubs/image/upload/v1732109193/pzz0mryvwyuehof8awbx.jpg",
-  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732287406/wn7wqah6bchropydvvd3.png",
-  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732287368/uw2somdeqcyrcysypelm.png",
-  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732287355/ogrm9cngh3dqndxzf2os.png",
-  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732287940/cyfljhirmno5zwsxk6uh.png"
+  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732289857/production/odqmtd4vyrlgywyxggfl219vxdga.jpg",
+  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732288281/development/rbrtgcnavdw0kedvsbzgkfp3shz3.jpg",
+  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732286001/development/ypjcjgd1rdwqzfggrf8mc4ycpcbb.jpg",
+  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732285998/development/490mqsbbnbcuis86244fggyrclvp.jpg",
+  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732285992/development/ulyjnclxhnjmpgi5o8zz2n8gs900.jpg",
+  "https://res.cloudinary.com/dmqwigubs/image/upload/v1732281013/development/097n1l0l8feo0jv805cgjtjkxhwl.jpg"
 ]
 
 20.times do

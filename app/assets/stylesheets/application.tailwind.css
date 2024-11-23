@@ -67,7 +67,6 @@ h1 {
   @apply hidden;
 }
 
-
 .mapboxgl-popup-content {
   border-radius: 10px;
   padding: 5px;
@@ -79,4 +78,8 @@ h1 {
   border-top-right-radius: 10px !important;
   border-bottom-left-radius: 0px !important;
   border-bottom-right-radius: 0px !important;
+}
+
+.hidden-md {
+  @apply hidden md:block !important;
 }
