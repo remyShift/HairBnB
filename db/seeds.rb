@@ -57,8 +57,7 @@ cloudinary_images = [
     hair_style = Wig::HAIRSTYLES.sample
     name = "#{["Great", "Beautiful", "Amazing", "Sweet", "Elegant", "Shiny"].sample} #{length} wig"
 
-    city = rand < 0.3 ? "Lyon" : Faker::Address.city  # 80% de chance que ce soit Lyon
-    full_address = "#{Faker::Address.street_address}, #{city}, France"
+    full_address = "#{Faker::Address.full_address}, France"
 
     new_wig = Wig.new(
       name: name,
